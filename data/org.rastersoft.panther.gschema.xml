@@ -1,0 +1,34 @@
+<schemalist>
+	<schema path="/org/rastersoft/panther/" id="org.rastersoft.panther" gettext-domain="panther">
+        <key name="columns" type="i">
+            <default>5</default>
+            <summary>The default number of columns</summary>
+            <description>This value needs to be greater than 3 to be effective.</description>
+        </key>
+        <key name="rows" type="i">
+            <default>3</default>
+            <summary>The default number of rows</summary>
+            <description>This value needs to be greater than 1 to be effective.</description>
+        </key>
+        <key name="icon-size" type="i">
+            <default>64</default>
+            <summary>The default icon size of apps</summary>
+            <description>This value manages the size of the icons in Panther.</description>
+        </key>
+        <key name="show-category-filter" type="b">
+            <default>true</default>
+            <summary>Show the category switcher or not</summary>
+            <description>This value handles the category switcher.</description>
+        </key>
+        <key name="use-category" type="b">
+            <default>false</default>
+            <summary>Show the category view by default</summary>
+            <description>Save the current view of the launcher.</description>
+        </key>
+        <key name="screen-resolution" type="s">
+            <default>""</default>
+            <summary>The last resolution of the screen</summary>
+            <description>This value makes Panther able to adapt to each screen.</description>
+        </key>
+	</schema>
+</schemalist>

@@ -1,0 +1,72 @@
+### AutoVala Project ###
+autovala_version: 16
+project_name: panther_launcher
+*vala_version: 0.28
+
+*define: HAVE_ZEITGEIST
+*define: HAS_PLANK
+
+
+vala_binary: src/panther_launcher
+compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
+*vala_check_package: atk
+*vala_check_package: cairo
+*vala_check_package: gdk-3.0
+*vala_check_package: gdk-pixbuf-2.0
+*vala_check_package: gee-0.8
+*vala_check_package: gio-2.0
+*vala_check_package: gio-unix-2.0
+*vala_check_package: glib-2.0
+*vala_check_package: gobject-2.0
+*vala_check_package: gtk+-3.0
+*vala_check_package: json-glib-1.0
+*vala_check_package: libgnome-menu-3.0
+*vala_check_package: libsoup-2.4
+*vala_check_package: pango
+*vala_check_package: pangocairo
+*vala_check_package: x11
+*vala_check_package: zeitgeist-2.0
+*c_library: m
+*vala_source: Backend/App.vala
+*vala_source: Backend/AppSystem.vala
+*vala_source: Backend/DBusService.vala
+*vala_source: Backend/RelevancyService.vala
+*vala_source: Backend/SynapseSearch.vala
+*vala_source: Panther.vala
+*vala_source: PantherView.vala
+*vala_source: Pixels.vala
+*vala_source: Settings.vala
+*vala_source: Utils.vala
+*vala_source: Widgets/AppEntry.vala
+*vala_source: Widgets/CategoryView.vala
+*vala_source: Widgets/Grid.vala
+*vala_source: Widgets/SearchItem.vala
+*vala_source: Widgets/SearchView.vala
+*vala_source: Widgets/Sidebar.vala
+*vala_source: Widgets/Switcher.vala
+*vala_source: synapse-core/common-actions.vala
+*vala_source: synapse-core/config-service.vala
+*vala_source: synapse-core/data-sink.vala
+*vala_source: synapse-core/dbus-service.vala
+*vala_source: synapse-core/desktop-file-service.vala
+*vala_source: synapse-core/match.vala
+*vala_source: synapse-core/plugin.vala
+*vala_source: synapse-core/query.vala
+*vala_source: synapse-core/relevancy-backend-zg.vala
+*vala_source: synapse-core/relevancy-service.vala
+*vala_source: synapse-core/result-set.vala
+*vala_source: synapse-core/utils.vala
+*vala_source: synapse-core/volume-service.vala
+*vala_source: synapse-plugins/calculator-plugin.vala
+*vala_source: synapse-plugins/command-plugin.vala
+*vala_source: synapse-plugins/desktop-file-plugin.vala
+*vala_source: synapse-plugins/system-managment.vala
+
+*po: po
+
+*data: data/local
+
+*doc: doc
+
+*scheme: data/org.rastersoft.panther.gschema.xml
+
