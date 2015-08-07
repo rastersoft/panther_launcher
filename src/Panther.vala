@@ -49,12 +49,9 @@ public class Panther.Panther : Gtk.Application {
                 this.view.show_panther ();
             }
         } else {
-            GLib.stdout.printf("Visible: %s; silent: %s\n",this.view.visible ? "si":"no",Panther.silent ? "si":"no");
             if (this.view.visible && !Panther.silent) {
-                print("Ocultar\n");
                 this.view.hide ();
             } else {
-                print("Mostrar\n");
                 this.view.show_panther ();
             }
         }

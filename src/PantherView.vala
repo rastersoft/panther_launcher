@@ -144,6 +144,7 @@ namespace Panther {
         private int category_row_focus = 0;
 
         private int primary_monitor = 0;
+        private bool avoid_show;
 
         public PantherView () {
 
@@ -155,6 +156,7 @@ namespace Panther {
             this.set_type_hint (Gdk.WindowTypeHint.MENU);
             this.focus_on_map = true;
             this.decorated = false;
+            this.avoid_show = false;
 
             // Have the window in the right place
             read_settings (true);
@@ -330,9 +332,7 @@ namespace Panther {
 
             // get_window_at_position returns null if the window belongs to another application.
             if (pointer.get_window_at_position (null, null) == null) {
-                print("Hide9\n");
                 hide ();
-
                 return true;
             }
 
@@ -354,11 +354,21 @@ namespace Panther {
             return false;
         }
 
+        public bool reset_avoid_show() {
+            this.avoid_show = false;
+            return false;
+        }
+
         private void connect_signals () {
 
             this.focus_in_event.connect (() => {
                 search_entry.grab_focus ();
                 return false;
+            });
+
+            this.hide.connect (() => {
+                this.avoid_show = true;
+                GLib.Timeout.add(300,this.reset_avoid_show);
             });
 
             event_box.key_press_event.connect (on_key_press);
@@ -378,7 +388,6 @@ namespace Panther {
             search_entry.activate.connect (search_entry_activated);
 
             search_view.app_launched.connect (() => {
-                print("Hide1\n");
                 hide ();
             });
 
@@ -451,7 +460,6 @@ namespace Panther {
         // Handle super+space when the user is typing in the search entry
         private bool search_entry_key_press (Gdk.EventKey event) {
             if ((event.keyval == Gdk.Key.space) && ((event.state & Gdk.ModifierType.SUPER_MASK) != 0)) {
-                print("Hide3\n");
                 hide ();
                 return true;
             }
@@ -470,7 +478,6 @@ namespace Panther {
         private void search_entry_activated () {
             if (modality == Modality.SEARCH_VIEW) {
                 if (search_view.launch_selected ()) {
-                    print("Hide4\n");
                     hide ();
                 }
             } else {
@@ -503,7 +510,6 @@ namespace Panther {
             switch (key) {
                 case "F4":
                     if ((event.state & Gdk.ModifierType.MOD1_MASK) != 0) {
-                        print("Hide5\n");
                         hide ();
                     }
 
@@ -513,7 +519,6 @@ namespace Panther {
                     if (search_entry.text.length > 0) {
                         search_entry.text = "";
                     } else {
-                        print("Hide6\n");
                         hide ();
                     }
 
@@ -524,7 +529,6 @@ namespace Panther {
                 case "KP_Enter":
                     if (modality == Modality.SEARCH_VIEW) {
                         if (search_view.launch_selected ()) {
-                            print("Hide7\n");
                             hide ();
                         }
                     } else {
@@ -741,9 +745,13 @@ namespace Panther {
         }
 
         public void show_panther () {
+
+            if (this.avoid_show) {
+                return;
+            }
+
             search_entry.text = "";
 
-            print("Do show\n");
             reposition ();
             show_all ();
             //this.event_box.show_all();
@@ -874,7 +882,6 @@ namespace Panther {
             foreach (Backend.App app in app_system.get_apps_by_name ()) {
                 var app_entry = new Widgets.AppEntry (app);
                 app_entry.app_launched.connect (() => {
-                    print("Hide8\n");
                     hide ();
                 });
                 grid_view.append (app_entry);
