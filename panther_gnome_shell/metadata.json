@@ -1,0 +1,5 @@
+{"name": "Slingshot Gnome",
+ "description": "Allows to use the SlingShot application launcher from Elementary OS with Gnome shell",
+ "shell-version": ["3.12","3.14","3.16"],
+ "uuid": "slingshotgnome@rastersoft.com",
+ "url": "https://github.com/rastersoft/slingshot_gnome"}

@@ -36,6 +36,12 @@ static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer
 		if (!set_name) {
 			g_set_application_name ("PantherLauncher");
 			set_name=TRUE;
+			int pid=fork();
+			if (pid == 0) {
+				// prelaunch panther launcher
+				system("panther_launcher -s");
+				exit(0);
+			}
 		}
 		gtk_container_set_border_width(GTK_CONTAINER (applet), 0);
 		gtk_widget_show_all(GTK_WIDGET(applet));
