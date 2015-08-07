@@ -195,8 +195,8 @@ namespace Panther {
             Gdk.Rectangle geometry;
             screen.get_monitor_geometry (primary_monitor, out geometry);
             Panther.settings.screen_resolution = @"$(geometry.width)x$(geometry.height)";
-            default_columns = 8;
-            default_rows = 5;
+            default_columns = 6;
+            default_rows = 3;
             while ((calculate_grid_width () >= 2 * geometry.width / 3)) {
                 default_columns--;
             }
