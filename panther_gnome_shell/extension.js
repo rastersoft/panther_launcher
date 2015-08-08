@@ -1,10 +1,10 @@
 /* -*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
 
 /***************************************************
- *           SlingShot for Gnome Shell             *
+ *       Panther-launcher for Gnome Shell          *
  *                                                 *
- * Allows to launch SlingShot launcher from        *
- * ElementaryOS under Gnome Shell                  *
+ * Allows to use Panther launcher (an slingshot    *
+ * fork from ElementaryOS) under Gnome Shell       *
  *                                                 *
  * Created by rastersoft, and distributed under    *
  * GPLv2 or later license.                         *
@@ -16,6 +16,7 @@
      1: First public version
      2: Cleaned the code
      3: Vertical align of the Applications text (thanks to Ov3rlo4d)
+     4: Changed for Panther-launcher
 
 */
 const Clutter = imports.gi.Clutter;
@@ -28,19 +29,16 @@ const PanelMenu = imports.ui.panelMenu;
 const Util = imports.misc.util;
 
 const LauncherButton = new Lang.Class({
-    Name: 'SlingShot_Gnome.LauncherButton',
+    Name: 'Panther_Gnome.LauncherButton',
     Extends: PanelMenu.Button,
 
     _init: function() {
 
-        this.parent(0.0,'SlingShot_Gnome');
+        this.parent(0.0,'Panther_Gnome');
         this.actor.add_style_class_name('panel-status-button');
         this._box = new St.BoxLayout({ style_class: 'panel-status-button-box' });
         this.actor.add_actor(this._box);
 
-        /*this.buttonIcon = new St.Icon({ gicon: null, style_class: 'system-status-icon' });
-        this.buttonIcon.icon_name='start-here';
-        this._box.add_actor(this.buttonIcon);*/
         this.buttonLabel = new St.Label({ text: _("Applications"),
                                               y_expand: true,
                                               y_align: Clutter.ActorAlign.CENTER });
@@ -49,13 +47,13 @@ const LauncherButton = new Lang.Class({
 
         this._setActivitiesNoVisible(true);
 
-        // When the user clicks in the Application button, launch slingshot-launcher
+        // When the user clicks in the Application button, launch panther-launcher
         // to show it
         this.actor.connect('button-release-event', function(element,event) {
             Util.spawn(['panther_launcher'])
         });
-        // At startup, prelaunch slingshot to make it faster the first time the
-        // user wants it (slingshot will remain in background, and the new
+        // At startup, prelaunch panther to make it faster the first time the
+        // user wants it (panther will remain in background, and the new
         // launches will just instruct it to show, instead of being reloaded
         Util.spawn(['panther_launcher', '-s'])
     },
@@ -80,15 +78,15 @@ const LauncherButton = new Lang.Class({
 
 });
 
-let SlingShotButton;
+let PantherButton;
 
 function enable() {
-    SlingShotButton = new LauncherButton();
-    Main.panel.addToStatusArea('slingshot-menu', SlingShotButton, 0, 'left');
+    PantherButton = new LauncherButton();
+    Main.panel.addToStatusArea('panther-menu', PantherButton, 0, 'left');
 }
 
 function disable() {
-    SlingShotButton.destroy();
+    PantherButton.destroy();
 }
 
 function init(extensionMeta) {
