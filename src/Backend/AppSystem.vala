@@ -19,7 +19,6 @@
 public class Panther.Backend.AppSystem : Object {
 
     const string GCC_PANEL_CATEGORY = "X-GNOME-Settings-Panel";
-    const string SWITCHBOARD_PLUG_CATEGORY = "X-PANTHEON-Switchboard-Plug";
 
     private Gee.ArrayList<GMenu.TreeDirectory> categories = null;
     private Gee.HashMap<string, Gee.ArrayList<App>> apps = null;
@@ -37,7 +36,7 @@ public class Panther.Backend.AppSystem : Object {
         rl_service.update_complete.connect (update_popularity);
 #endif
 
-        apps_menu = new GMenu.Tree ("pantheon-applications.menu", GMenu.TreeFlags.INCLUDE_EXCLUDED | GMenu.TreeFlags.SORT_DISPLAY_NAME);
+        apps_menu = new GMenu.Tree ("panther-applications.menu", GMenu.TreeFlags.INCLUDE_EXCLUDED | GMenu.TreeFlags.SORT_DISPLAY_NAME);
         apps_menu.changed.connect (update_app_system);
         
         apps = new Gee.HashMap<string, Gee.ArrayList<App>> ();
@@ -130,8 +129,7 @@ public class Panther.Backend.AppSystem : Object {
             foreach (App app in category) {
 
                 if (app.categories != null
-                    && (GCC_PANEL_CATEGORY in app.categories
-                    || SWITCHBOARD_PLUG_CATEGORY in app.categories))
+                    && (GCC_PANEL_CATEGORY in app.categories))
                     continue;
                 
 

@@ -3,6 +3,8 @@ autovala_version: 16
 project_name: panther_launcher
 *vala_version: 0.28
 
+custom: data/panther-applications.menu /etc/xdg/menus
+
 *define: HAVE_ZEITGEIST
 *define: HAS_PLANK
 
