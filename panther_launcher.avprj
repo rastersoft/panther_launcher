@@ -72,3 +72,6 @@ compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 
 *scheme: data/org.rastersoft.panther.gschema.xml
 
+*full_icon: Hicolor Status data/icons/panther-categories-symbolic.svg
+*full_icon: Hicolor Status data/icons/panther-icons-symbolic.svg
+

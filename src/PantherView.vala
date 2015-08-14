@@ -50,13 +50,13 @@ namespace Panther {
             this.set_layout(Gtk.ButtonBoxStyle.START);
 
             view_all = new Gtk.ToggleButton();
-            var image = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.MENU);
+            var image = new Gtk.Image.from_icon_name ("panther-icons-symbolic", Gtk.IconSize.MENU);
             image.tooltip_text = _("View as Grid");
             view_all.add(image);
             this.pack_start(view_all,false,false,0);
 
             view_cats = new Gtk.ToggleButton();
-            image = new Gtk.Image.from_icon_name ("view-filter-symbolic", Gtk.IconSize.MENU);
+            image = new Gtk.Image.from_icon_name ("panther-categories-symbolic", Gtk.IconSize.MENU);
             image.tooltip_text = _("View by Category");
             view_cats.add(image);
             this.pack_start (view_cats,false,false,0);
