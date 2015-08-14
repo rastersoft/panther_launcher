@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="32.25"
-     inkscape:cx="0.98486526"
+     inkscape:cx="4.3802141"
      inkscape:cy="12"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -63,7 +63,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -75,74 +75,34 @@
     <rect
        style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
        id="rect3091-8"
-       width="4"
-       height="4.0000343"
+       width="6"
+       height="6.0000343"
        x="9"
        y="1037.3622"
        ry="0.85385269" />
     <rect
        style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
        id="rect3091-3"
-       width="4"
-       height="3.9999654"
-       x="19"
+       width="6"
+       height="5.9999657"
+       x="17"
        y="1037.3622"
        ry="0.85385269" />
     <rect
        style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
        id="rect3091-2"
-       width="4"
-       height="4.0000343"
+       width="6"
+       height="6.0000343"
        x="9"
-       y="1047.3622"
+       y="1045.3622"
        ry="0.85385269" />
     <rect
        style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
        id="rect3091-73"
-       width="4"
-       height="3.9999654"
-       x="19"
-       y="1047.3622"
-       ry="0.85385269" />
-    <rect
-       style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
-       id="rect3091-73-9"
-       width="4"
-       height="4.0000343"
-       x="9"
-       y="1042.3622"
-       ry="0.85385269" />
-    <rect
-       style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
-       id="rect3091-73-3"
-       width="4"
-       height="3.9999654"
-       x="14"
-       y="1042.3622"
-       ry="0.85385269" />
-    <rect
-       style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
-       id="rect3091-73-5"
-       width="4"
-       height="3.9999654"
-       x="14"
-       y="1037.3622"
-       ry="0.85385269" />
-    <rect
-       style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
-       id="rect3091-73-0"
-       width="4"
-       height="4.0000343"
-       x="19"
-       y="1042.3622"
-       ry="0.85385269" />
-    <rect
-       style="fill:#bebebe;fill-opacity:1;stroke:none;stroke-opacity:1"
-       id="rect3091-73-01"
-       width="4"
-       height="4.0000343"
-       x="14"
-       y="1047.3622"
+       width="6"
+       height="5.9999657"
+       x="17"
+       y="1045.3622"
        ry="0.85385269" />
   </g>
 </svg>
