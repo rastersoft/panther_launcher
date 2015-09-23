@@ -54,4 +54,5 @@ add_subdirectory(src)
 add_subdirectory(po)
 add_subdirectory(data)
 add_subdirectory(data/icons)
+add_subdirectory(panther_gnome_shell)
 

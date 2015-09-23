@@ -1,15 +1,20 @@
 ### AutoVala Project ###
 autovala_version: 16
 project_name: panther_launcher
-*vala_version: 0.28
+vala_version: 0.26
 
 custom: data/panther-applications.menu /etc/xdg/menus
+custom: panther_gnome_shell/LICENSE share/gnome-shell/extensions/slingshotgnome@rastersoft.com
+custom: panther_gnome_shell/README.md share/gnome-shell/extensions/slingshotgnome@rastersoft.com
+custom: panther_gnome_shell/extension.js share/gnome-shell/extensions/slingshotgnome@rastersoft.com
+custom: panther_gnome_shell/metadata.json share/gnome-shell/extensions/slingshotgnome@rastersoft.com
 
 *define: HAVE_ZEITGEIST
 *define: HAS_PLANK
 
 
 vala_binary: src/panther_launcher
+*version: 1.1.0
 compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 *vala_check_package: atk
 *vala_check_package: cairo
