@@ -14,7 +14,7 @@ custom: panther_gnome_shell/metadata.json share/gnome-shell/extensions/slingshot
 
 
 vala_binary: src/panther_launcher
-*version: 1.1.0
+*version: 1.1.1
 compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 *vala_check_package: atk
 *vala_check_package: cairo
