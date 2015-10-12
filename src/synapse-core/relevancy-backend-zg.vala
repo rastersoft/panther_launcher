@@ -18,6 +18,7 @@
  *
  */
 
+#if HAVE_ZEITGEIST
 using Zeitgeist;
 //using GLib.Math
 
@@ -313,4 +314,4 @@ namespace Synapse
     }
   }
 }
-
+#endif

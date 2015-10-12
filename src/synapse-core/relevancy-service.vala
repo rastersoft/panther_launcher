@@ -57,7 +57,11 @@ namespace Synapse
     
     private void initialize_relevancy_backend ()
     {
+#if HAVE_ZEITGEIST
       backend = new ZeitgeistRelevancyBackend ();
+#else
+      backend = null;
+#endif
     }
     
     public float get_application_popularity (string desktop_id)

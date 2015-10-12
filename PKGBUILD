@@ -1,5 +1,5 @@
 pkgname=panther_launcher
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A fork from Slingshot Launcher. Its main change is that it doesn't
 depend on Gala, Granite or other libraries not available in regular
@@ -14,7 +14,7 @@ build() {
 	rm -rf ${startdir}/install
 	mkdir ${startdir}/install
 	cd ${startdir}/install
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DHAVE_ZEITGEIST=OFF
 	make
 }
 
