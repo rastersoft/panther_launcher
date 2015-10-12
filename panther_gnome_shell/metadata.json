@@ -1,5 +1,5 @@
 {"name": "Panther Launcher for Gnome",
  "description": "Allows to use the Panther application launcher (derived from Elementary OS) with Gnome shell",
- "shell-version": ["3.12","3.14","3.16"],
+ "shell-version": ["3.12","3.14","3.16","3.18"],
  "uuid": "slingshotgnome@rastersoft.com",
  "url": "https://github.com/rastersoft/slingshot_gnome"}
