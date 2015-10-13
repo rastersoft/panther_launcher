@@ -1,8 +1,14 @@
+panther_launcher (1.1.3-Debian1) sid; urgency=low
+
+  * Fully removed the dependency with Zeitgeist (now is fully optional)
+
+ -- Sergio Costas <rastersoft@gmail.com>  Wed, 13 Oct 2015 19:34:03 +0200
+
 panther_launcher (1.1.2-Debian1) sid; urgency=low
 
   * Updated support for gnome shell 3.18
 
- -- Sergio Costas <rastersoft@gmail.com>  Wed, 13 Oct 2015 20:49:03 +0200
+ -- Sergio Costas <rastersoft@gmail.com>  Wed, 13 Oct 2015 00:49:03 +0200
 
 panther_launcher (1.1.1-Debian1) sid; urgency=low
 
