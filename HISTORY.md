@@ -1,3 +1,6 @@
+* Version 1.2.0 (2015-10-17)
+   * It closes when pressing ESCAPE key
+   * Can be launched with <Super>+q (editable with dconf-editor)
 * Version 1.1.3 (2015-10-13)
    * Removed dependency from Zeitgeist (now is fully optional)
 * Version 1.1.2 (2015-10-13)

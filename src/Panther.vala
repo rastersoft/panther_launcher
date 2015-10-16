@@ -18,7 +18,7 @@
 
 using Gtk;
 
-// project version = 1.1.3
+// project version = 1.2.0
 
 public class Panther.Panther : Gtk.Application {
 

@@ -470,6 +470,14 @@ namespace Panther {
                     // useful with a context
                     // search_view.toggle_context (!search_view.in_context_view);
                     return true;
+                break;
+                case Gdk.Key.Escape:
+                    if (search_entry.text.length > 0) {
+                        search_entry.text = "";
+                    } else {
+                        hide ();
+                    }
+                break;
             }
 
             return false;

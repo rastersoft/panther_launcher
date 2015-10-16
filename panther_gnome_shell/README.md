@@ -17,6 +17,7 @@ installed Panther Launcher.
 ## History of versions:
 
     1: First public version
+    2: Added hotkey support (shows Panther Launcher using <Super>q
 
 ## Contacting the author
 
