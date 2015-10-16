@@ -1,30 +1,37 @@
-panther_launcher (1.1.3-Debian1) sid; urgency=low
+panther-launcher (1.2.0-Debian1) sid; urgency=low
 
-  * Fully removed the dependency with Zeitgeist (now is fully optional)
+  * It closes when pressing ESCAPE key
+  * Can be launched with <Super>+q (editable with dconf-editor)
 
- -- Sergio Costas <rastersoft@gmail.com>  Wed, 13 Oct 2015 19:34:03 +0200
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Sat, 17 Oct 2015 23:55:00 +0200
 
-panther_launcher (1.1.2-Debian1) sid; urgency=low
+panther-launcher (1.1.3-Debian1) sid; urgency=low
 
-  * Updated support for gnome shell 3.18
+  * Removed dependency from Zeitgeist (now is fully optional)
 
- -- Sergio Costas <rastersoft@gmail.com>  Wed, 13 Oct 2015 00:49:03 +0200
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Tue, 13 Oct 2015 23:55:00 +0200
 
-panther_launcher (1.1.1-Debian1) sid; urgency=low
+panther-launcher (1.1.2-Debian1) sid; urgency=low
 
-  * Changes made
+  * Updated gnome shell extension for gnome shell 3.18
 
- -- Sergio Costas <rastersoft@gmail.com>  Wed, 24 Sep 2015 20:49:03 +0200
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Tue, 13 Oct 2015 23:50:00 +0200
 
-panther_launcher (1.1.0-Debian1) sid; urgency=low
+panther-launcher (1.1.1-Debian1) sid; urgency=low
 
-  * Changes made
+  * Updated text in Shell extension
 
- -- Sergio Costas <rastersoft@gmail.com>  Wed, 23 Sep 2015 23:51:49 +0200
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Thu, 24 Sep 2015 23:55:00 +0200
 
-panther_launcher (1.0.0-Debian1) sid; urgency=low
+panther-launcher (1.1.0-Debian1) sid; urgency=low
 
-  * Changes made
+  * Now installs the Gnome Shell extension system wide, allowing to put it in the packages
 
- -- Sergio Costas <rastersoft@gmail.com>  Sat, 15 Aug 2015 10:59:16 +0200
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Wed, 23 Sep 2015 23:55:00 +0200
+
+panther-launcher (1.0.0-Debian1) sid; urgency=low
+
+  * First public version
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Sat, 15 Aug 2015 23:55:00 +0200
 
