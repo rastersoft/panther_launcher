@@ -30,5 +30,10 @@
             <summary>The last resolution of the screen</summary>
             <description>This value makes Panther able to adapt to each screen.</description>
         </key>
+        <key name="show-keybinding" type="as">
+            <default><![CDATA[['<Super>q']]]></default>
+            <summary>A key to show Panther Launcher from Gnome Shell</summary>
+            <description>By pressing this key, Gnome Shell will show panther launcher in screen.</description>
+        </key>
 	</schema>
 </schemalist>

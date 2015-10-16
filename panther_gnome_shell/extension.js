@@ -20,6 +20,9 @@
 
 */
 const Clutter = imports.gi.Clutter;
+const Gio = imports.gi.Gio;
+const Meta = imports.gi.Meta;
+const Shell = imports.gi.Shell;
 
 const Lang = imports.lang;
 const St = imports.gi.St;
@@ -49,16 +52,20 @@ const LauncherButton = new Lang.Class({
 
         // When the user clicks in the Application button, launch panther-launcher
         // to show it
-        this.actor.connect('button-release-event', function(element,event) {
-            Util.spawn(['panther_launcher'])
-        });
+        this.actor.connect('button-release-event', Lang.bind(this,this.launch_function));
+
         // At startup, prelaunch panther to make it faster the first time the
         // user wants it (panther will remain in background, and the new
         // launches will just instruct it to show, instead of being reloaded
-        Util.spawn(['panther_launcher', '-s'])
+        Util.spawn(['panther_launcher', '-s']);
+
+        let mode = Shell.ActionMode ? Shell.ActionMode.NORMAL : Shell.KeyBindingMode.ALL;
+        let flags = Meta.KeyBindingFlags.NONE;
+        Main.wm.addKeybinding("show-keybinding", new Gio.Settings({schema: 'org.rastersoft.panther'}),flags,mode, Lang.bind(this, this.launch_function));
     },
 
     destroy: function() {
+        Main.wm.removeKeybinding("show-keybinding");
         this._setActivitiesNoVisible(false);
         this.parent();
     },
@@ -76,6 +83,9 @@ const LauncherButton = new Lang.Class({
         }
     },
 
+    launch_function: function () {
+        Util.spawn(['panther_launcher']);
+    },
 });
 
 let PantherButton;
