@@ -109,6 +109,7 @@ namespace Panther {
 
         public Gtk.Grid top;
         public Gtk.Grid container;
+        public Gtk.Frame fcontainer;
         public Gtk.Stack main_stack;
         public Gtk.Box content_area;
         private Gtk.EventBox event_box;
@@ -275,8 +276,11 @@ namespace Panther {
             container.attach (top, 0, 0, 1, 1);
             container.attach (stack, 0, 1, 1, 1);
 
+            this.fcontainer = new Gtk.Frame(null);
+            this.fcontainer.add (container);
+
             event_box = new Gtk.EventBox ();
-            event_box.add (container);
+            event_box.add (fcontainer);
             // Add the container to the dialog's content area
 
             /*ref_grid = new Gtk.Grid ();
@@ -291,13 +295,6 @@ namespace Panther {
             debug ("Ui setup completed");
         }
 
-/*        public override bool draw(Cairo.Context cr) {
-            cr.set_source_rgba(0,0,0,0);
-            cr.set_operator(Cairo.Operator.SOURCE);
-            cr.paint();
-            cr.set_operator(Cairo.Operator.OVER);
-            return base.draw(cr);
-        }*/
 
         public void grab_device () {
             var display = Gdk.Display.get_default ();
