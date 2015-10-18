@@ -1,3 +1,5 @@
+* Version 1.3.0 (2015-10-18)
+   * Added a frame around the launcher to better visually delimite it
 * Version 1.2.0 (2015-10-17)
    * It closes when pressing ESCAPE key
    * Can be launched with <Super>+q (editable with dconf-editor)
