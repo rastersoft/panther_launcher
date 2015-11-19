@@ -16,17 +16,6 @@ static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_
 	}
 }
 
-static void widget_realized_cb (GtkWidget *widget) {
-
-	GdkRGBA color;
-	gtk_widget_reset_style(widget);
-	GtkStyleContext *style = gtk_widget_get_style_context (GTK_WIDGET(widget));
-	if (style != NULL) {
-		gtk_style_context_get_color(style,GTK_STATE_FLAG_NORMAL,&color);
-		printf("R: %X G: %X B: %X\n",color.red,color.green,color.blue);
-	}
-}
-
 static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer data) {
 
 	gboolean retval = FALSE;
@@ -54,7 +43,6 @@ static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer
 		gtk_container_add(GTK_CONTAINER(eventbox),main_button);
 		gtk_widget_show_all(GTK_WIDGET(applet));
 		g_object_connect(G_OBJECT(eventbox),"signal::button_release_event",button_clicked,NULL,NULL);
-		g_object_connect(G_OBJECT(main_button),"signal::realize",G_CALLBACK(widget_realized_cb),main_button,NULL);
 		retval = TRUE;
 	}
 
