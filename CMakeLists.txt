@@ -46,11 +46,13 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} libsoup-2.4)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} pango)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} pangocairo)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} x11)
+set(MODULES_TO_CHECK ${MODULES_TO_CHECK} zeitgeist-1.0)
 
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
 add_subdirectory(src)
 add_subdirectory(po)
+add_subdirectory(panther_applet)
 add_subdirectory(data)
 add_subdirectory(data/icons)
 add_subdirectory(panther_gnome_shell)

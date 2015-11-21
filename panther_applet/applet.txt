@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 2.8)
+
+find_package(PkgConfig)
+pkg_check_modules(APPLET gtk+-3.0 libpanel-applet)
+
+link_directories(
+    ${APPLET_LIBRARY_DIRS}
+)
+include_directories(
+    ${APPLET_INCLUDE_DIRS}
+)
+
+add_library(pantherapplet SHARED panther_applet.c)
+target_link_libraries(pantherapplet
+    ${APPLET_LIBRARIES}
+)
+
+install (TARGETS pantherapplet LIBRARY DESTINATION /usr/lib/gnome-panel/5.0/)
+install (FILES ${CMAKE_SOURCE_DIR}/panther_applet/panther_launcher.panel-applet DESTINATION /usr/share/gnome-panel/5.0/applets/)
