@@ -1,3 +1,6 @@
+* Version 1.4.0 (2015-11-22)
+   * Now Zeitgeist is really fully optional
+   * Now also installs the applet for gnome flashback
 * Version 1.3.0 (2015-10-18)
    * Added a frame around the launcher to better visually delimite it
 * Version 1.2.0 (2015-10-17)

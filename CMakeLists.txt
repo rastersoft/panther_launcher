@@ -30,6 +30,9 @@ endif()
 
 find_package(PkgConfig)
 
+if ((HAVE_ZEITGEIST))
+	set(MODULES_TO_CHECK ${MODULES_TO_CHECK} zeitgeist-1.0)
+endif ()
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} atk)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} cairo)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gdk-3.0)
@@ -46,7 +49,6 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} libsoup-2.4)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} pango)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} pangocairo)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} x11)
-set(MODULES_TO_CHECK ${MODULES_TO_CHECK} zeitgeist-1.0)
 
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
