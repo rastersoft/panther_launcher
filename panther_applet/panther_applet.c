@@ -3,27 +3,35 @@
 #include <panel-applet.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "dbus.h"
+
+extern char *envp[];
 
 static gboolean applet_fill_cb (PanelApplet * applet, const gchar * iid, gpointer data);
 
 PANEL_APPLET_IN_PROCESS_FACTORY ("PantherAppletFactory", PANEL_TYPE_APPLET, applet_fill_cb, NULL);
 
+static void launch(char silent) {
+
+	int pid=fork();
+	char *args[2];
+
+    if (silent == 0) {
+        args[0] = NULL;
+    } else {
+        args[0] = "-s";
+        args[1] = NULL;
+    }
+	if (pid == 0) {
+		// prelaunch panther launcher
+		execve("/usr/bin/panther_launcher",args,envp);
+		execve("/usr/local/bin/panther_launcher",args,envp);
+		exit(0);
+	}
+}
+
 static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_data) {
 
-    GDBusObjectManager *manager;
-    GError *error;
-
-    manager = object_manager_client_new_for_bus_sync (G_BUS_TYPE_SESSION,
-                                                      G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE,
-                                                      "com.rastersoft.panther.remotecontrol",
-                                                      "/com/rastersoft/panther/remotecontrol",
-                                                      NULL, /* GCancellable */
-                                                      &error);
-    if (manager != NULL) {
-        com_rastersoft_panther_remotecontrol_call_do_show_sync(COM_RASTERSOFT_PANTHER_REMOTECONTROL(manager),NULL,&error);
-        g_object_unref (manager);
-    }
+    launch(0);
 
 }
 
@@ -36,12 +44,7 @@ static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer
 		if (!set_name) {
 			g_set_application_name ("PantherLauncher");
 			set_name=TRUE;
-			int pid=fork();
-			if (pid == 0) {
-				// prelaunch panther launcher
-				system("panther_launcher -s");
-				exit(0);
-			}
+            launch(1);
 		}
 		gtk_container_set_border_width(GTK_CONTAINER (applet), 0);
 		gtk_widget_show_all(GTK_WIDGET(applet));

@@ -1,6 +1,0 @@
-<node>
-  <interface name="com.rastersoft.panther.remotecontrol">
-    <method name="DoShow">
-    </method>
-  </interface>
-</node>
