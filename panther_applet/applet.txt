@@ -10,7 +10,7 @@ include_directories(
     ${APPLET_INCLUDE_DIRS}
 )
 
-add_library(pantherapplet SHARED panther_applet.c)
+add_library(pantherapplet SHARED panther_applet.c dbus.c)
 
 target_link_libraries(pantherapplet
     ${APPLET_LIBRARIES}
