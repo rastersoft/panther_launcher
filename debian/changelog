@@ -1,6 +1,8 @@
 panther-launcher (1.5.0-Debian1) sid; urgency=low
 
-  * Added DBUS remote control
+  * Added DBus remote control and DBus activation support
+  * Gnome Shell extension now uses DBus to show the menu
+  * Applet for gnome-panel (gnome flashback) now uses DBus to show the menu
 
  -- Sergio Costas Rodriguez <raster@rastersoft.com>  Sun, 06 Dec 2015 23:55:00 +0200
 

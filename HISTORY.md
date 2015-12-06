@@ -1,7 +1,7 @@
 * Version 1.5.0 (2015-12-06)
    * Added DBus remote control and DBus activation support
-   * Applet for gnome-panel (gnome flashback) is now faster
    * Gnome Shell extension now uses DBus to show the menu
+   * Applet for gnome-panel (gnome flashback) now uses DBus to show the menu
 * Version 1.4.0 (2015-11-22)
    * Now Zeitgeist is really fully optional
    * Now also installs the applet for gnome flashback
