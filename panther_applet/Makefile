@@ -9,8 +9,8 @@ libpantherapplet.so: panther_applet.o dbus.o
 panther_applet.o: panther_applet.c dbus.h
 	$(CC) -o panther_applet.o panther_applet.c `pkg-config --cflags gtk+-3.0 libpanel-applet`
 
-dbus.c dbus.h: gdbus.xml
-	gdbus-codegen --c-generate-object-manager --generate-c-code dbus gdbus.xml
+#dbus.c dbus.h: gdbus.xml
+#	gdbus-codegen --c-generate-object-manager --generate-c-code dbus gdbus.xml
 
 dbus.o: dbus.c dbus.h
 	$(CC) -o dbus.o dbus.c `pkg-config --cflags gio-2.0 gio-unix-2.0`
@@ -21,4 +21,4 @@ install: libpantherapplet.so
 	cp panther_launcher.panel-applet /usr/share/gnome-panel/5.0/applets/
 
 clean:
-	rm -f *.o dbus.c dbus.h libpantherapplet.so
+	rm -f *.o libpantherapplet.so

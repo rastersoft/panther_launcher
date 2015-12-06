@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 find_package(PkgConfig)
-pkg_check_modules(APPLET gtk+-3.0 libpanel-applet)
+pkg_check_modules(APPLET gtk+-3.0 libpanel-applet gio-2.0 gio-unix-2.0)
 
 link_directories(
     ${APPLET_LIBRARY_DIRS}
@@ -11,6 +11,7 @@ include_directories(
 )
 
 add_library(pantherapplet SHARED panther_applet.c)
+
 target_link_libraries(pantherapplet
     ${APPLET_LIBRARIES}
 )
