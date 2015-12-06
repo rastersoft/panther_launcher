@@ -48,7 +48,7 @@ static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_
         if (com_rastersoft_panther_remotecontrol_call_do_show_sync(proxy,NULL,&error)) {
             printf("do show True\n");
         } else {
-            printf("do show false\n");
+            printf("do show false: %d; %s\n",error->code,error->message);
         }
         g_object_unref(proxy);
     } else {
