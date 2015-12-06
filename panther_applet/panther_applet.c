@@ -38,7 +38,7 @@ static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_
 
     ComRastersoftPantherRemotecontrol *proxy;
     proxy = com_rastersoft_panther_remotecontrol_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
-                                                  G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE,
+                                                  G_DBUS_PROXY_FLAGS_NONE,
                                                   "com.rastersoft.panther.remotecontrol",
                                                   "/com/rastersoft/panther/remotecontrol",
                                                   NULL, /* GCancellable */
