@@ -3,17 +3,28 @@
 #include <panel-applet.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "dbus.h"
 
 static gboolean applet_fill_cb (PanelApplet * applet, const gchar * iid, gpointer data);
 
 PANEL_APPLET_IN_PROCESS_FACTORY ("PantherAppletFactory", PANEL_TYPE_APPLET, applet_fill_cb, NULL);
 
 static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_data) {
-	int pid=fork();
-	if (pid == 0) {
-		system("panther_launcher");
-		exit(0);
-	}
+
+    GDBusObjectManager *manager;
+    GError *error;
+
+    manager = object_manager_client_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                                      G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE,
+                                                      "com.rastersoft.panther.remotecontrol",
+                                                      "/com/rastersoft/panther/remotecontrol",
+                                                      NULL, /* GCancellable */
+                                                      &error);
+    if (manager != NULL) {
+        com_rastersoft_panther_remotecontrol_call_do_show_sync(COM_RASTERSOFT_PANTHER_REMOTECONTROL(manager),NULL,&error);
+        g_object_unref (manager);
+    }
+
 }
 
 static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer data) {

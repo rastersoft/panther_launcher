@@ -1,3 +1,5 @@
+* Version 1.5.0 (2015-12-06)
+   * Added DBUS remote control
 * Version 1.4.0 (2015-11-22)
    * Now Zeitgeist is really fully optional
    * Now also installs the applet for gnome flashback

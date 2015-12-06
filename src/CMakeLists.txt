@@ -7,13 +7,13 @@ set (GETTEXT_PACKAGE "panther_launcher")
 set (RELEASE_NAME "panther_launcher")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (VERSION "1.4.0")
+set (VERSION "1.5.0")
 set (TESTSRCDIR "${CMAKE_SOURCE_DIR}")
 set (DOLLAR "$")
 
 configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
-set (VERSION "1.4.0")
+set (VERSION "1.5.0")
 add_definitions (${DEPS_CFLAGS})
 link_libraries ( ${DEPS_LIBRARIES} )
 link_directories ( ${DEPS_LIBRARY_DIRS} )
@@ -103,12 +103,12 @@ OPTIONS
 add_executable(panther_launcher ${VALA_C})
 target_link_libraries( panther_launcher m )
 
+
 install(TARGETS
 	panther_launcher
 RUNTIME DESTINATION
-	${CMAKE_INSTALL_BINDIR}/
+	${CMAKE_INSTALL_BINDIR}
 )
-
 if(HAVE_VALADOC)
 	valadoc(panther_launcher
 		${CMAKE_BINARY_DIR}/valadoc/panther_launcher
