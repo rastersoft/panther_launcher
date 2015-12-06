@@ -20,6 +20,7 @@
 
 */
 const Clutter = imports.gi.Clutter;
+const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
 const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
@@ -30,6 +31,14 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const PanelMenu = imports.ui.panelMenu;
 const Util = imports.misc.util;
+
+const MyIface = '<node>\
+<interface name="com.rastersoft.panther.remotecontrol">\
+  <method name="DoShow" />\
+</interface>\
+</node>';
+
+const MyProxy = Gio.DBusProxy.makeProxyWrapper(MyIface);
 
 const LauncherButton = new Lang.Class({
     Name: 'Panther_Gnome.LauncherButton',
@@ -84,7 +93,9 @@ const LauncherButton = new Lang.Class({
     },
 
     launch_function: function () {
-        Util.spawn(['panther_launcher']);
+        let instance = new MyProxy(Gio.DBus.session, 'com.rastersoft.panther.remotecontrol',
+'/com/rastersoft/panther/remotecontrol');
+        instance.DoShowSync();
     },
 });
 
