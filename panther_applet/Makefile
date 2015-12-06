@@ -10,6 +10,7 @@ panther_applet.o: panther_applet.c
 	$(CC) -o panther_applet.o panther_applet.c `pkg-config --cflags gtk+-3.0 libpanel-applet`
 
 install: libpantherapplet.so
+	mkdir -p /usr/lib/gnome-panel/5.0/
 	cp libpantherapplet.so /usr/lib/gnome-panel/5.0/
 	cp panther_launcher.panel-applet /usr/share/gnome-panel/5.0/applets/
 

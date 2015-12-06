@@ -19,7 +19,7 @@ using Gtk;
 
 public class Panther.DBusService : Object {
 
-    [DBus (name = "org.rastersoft.panther")]
+    [DBus (name = "com.rastersoft.panther")]
     private class Service : Object {
         public signal void visibility_changed (bool launcher_visible);
         private Gtk.Widget? view = null;
@@ -42,7 +42,7 @@ public class Panther.DBusService : Object {
         // Own bus name
         // try to register service name in session bus
         Bus.own_name (BusType.SESSION,
-                      "org.rastersoft.panther",
+                      "com.rastersoft.panther",
                       BusNameOwnerFlags.NONE,
                       (conn) => { on_bus_aquired (conn, view); },
                       name_acquired_handler,
@@ -54,7 +54,7 @@ public class Panther.DBusService : Object {
         try {
             // start service and register it as dbus object
             service = new Service (view);
-            connection.register_object ("/org/rastersoft/panther", service);
+            connection.register_object ("/com/rastersoft/panther", service);
         } catch (IOError e) {
             critical ("Could not register service: %s", e.message);
             return_if_reached ();

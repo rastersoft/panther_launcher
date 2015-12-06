@@ -30,6 +30,9 @@ endif()
 
 find_package(PkgConfig)
 
+if ((HAVE_ZEITGEIST))
+	set(MODULES_TO_CHECK ${MODULES_TO_CHECK} zeitgeist-1.0)
+endif ()
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} atk)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} cairo)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gdk-3.0)
@@ -49,8 +52,13 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} x11)
 
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
+if ( (NOT EXISTS "/usr/lib/pkgconfig/libpanel-applet.pc") AND (NOT EXISTS "/usr/lib64/pkgconfig/libpanel-applet.pc"))
+	message(FATAL_ERROR "Can't find any of the files /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc")
+endif()
+
 add_subdirectory(src)
 add_subdirectory(po)
+add_subdirectory(panther_applet)
 add_subdirectory(data)
 add_subdirectory(data/icons)
 add_subdirectory(panther_gnome_shell)

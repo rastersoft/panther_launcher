@@ -17,22 +17,25 @@
 //
 
 using Gtk;
+using GLib;
 
-// project version = 1.3.0
+// project version = 1.5.0
+
+Panther.Panther app;
 
 public class Panther.Panther : Gtk.Application {
 
-    private PantherView view = null;
+    public PantherView view = null;
     public static bool silent = false;
     public static bool command_mode = false;
+    public bool launched = false;
 
     public static Settings settings { get; private set; default = null; }
-    //public static CssProvider style_provider { get; private set; default = null; }
     public static Gtk.IconTheme icon_theme { get; set; default = null; }
     private DBusService? dbus_service = null;
 
     construct {
-        application_id = "org.rastersoft.panther";
+        application_id = "com.rastersoft.panther";
     }
 
     public Panther () {
@@ -83,10 +86,32 @@ public class Panther.Panther : Gtk.Application {
                 print (e.message + "\n");
             }
         }
-        
-        var app = new Panther ();
+
+        app = new Panther ();
+
+        Bus.own_name (BusType.SESSION, "com.rastersoft.panther.remotecontrol", BusNameOwnerFlags.NONE, on_bus_aquired, () => {}, () => {});
 
         return app.run (args);
     }
-
 }
+
+void on_bus_aquired (DBusConnection conn) {
+    try {
+        conn.register_object ("/com/rastersoft/panther/remotecontrol", new RemoteControl ());
+    } catch (IOError e) {
+        GLib.stderr.printf ("Could not register service\n");
+    }
+}
+
+[DBus (name = "com.rastersoft.panther.remotecontrol")]
+public class RemoteControl : GLib.Object {
+
+    public int do_ping(int v) {
+        return (v+1);
+    }
+
+    public void do_show() {
+        app.activate();
+    }
+}
+

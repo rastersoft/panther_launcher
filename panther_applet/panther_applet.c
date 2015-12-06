@@ -4,27 +4,37 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+extern char **environ;
+
 static gboolean applet_fill_cb (PanelApplet * applet, const gchar * iid, gpointer data);
 
 PANEL_APPLET_IN_PROCESS_FACTORY ("PantherAppletFactory", PANEL_TYPE_APPLET, applet_fill_cb, NULL);
 
-static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_data) {
+static void launch(char silent) {
+
 	int pid=fork();
+	char *args[3];
+
+    if (silent == 0) {
+        args[1] = NULL;
+    } else {
+        args[1] = "-s";
+        args[2] = NULL;
+    }
 	if (pid == 0) {
-		system("panther_launcher");
+		// prelaunch panther launcher
+		args[0]="/usr/bin/panther_launcher";
+		execve(args[0],args,environ);
+		args[0]="/usr/local/bin/panther_launcher";
+		execve(args[0],args,environ);
 		exit(0);
 	}
 }
 
-static void widget_realized_cb (GtkWidget *widget) {
+static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_data) {
 
-	GdkRGBA color;
-	gtk_widget_reset_style(widget);
-	GtkStyleContext *style = gtk_widget_get_style_context (GTK_WIDGET(widget));
-	if (style != NULL) {
-		gtk_style_context_get_color(style,GTK_STATE_FLAG_NORMAL,&color);
-		printf("R: %X G: %X B: %X\n",color.red,color.green,color.blue);
-	}
+    launch(0);
+
 }
 
 static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer data) {
@@ -36,12 +46,7 @@ static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer
 		if (!set_name) {
 			g_set_application_name ("PantherLauncher");
 			set_name=TRUE;
-			int pid=fork();
-			if (pid == 0) {
-				// prelaunch panther launcher
-				system("panther_launcher -s");
-				exit(0);
-			}
+            launch(1);
 		}
 		gtk_container_set_border_width(GTK_CONTAINER (applet), 0);
 		gtk_widget_show_all(GTK_WIDGET(applet));
@@ -54,7 +59,6 @@ static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer
 		gtk_container_add(GTK_CONTAINER(eventbox),main_button);
 		gtk_widget_show_all(GTK_WIDGET(applet));
 		g_object_connect(G_OBJECT(eventbox),"signal::button_release_event",button_clicked,NULL,NULL);
-		g_object_connect(G_OBJECT(main_button),"signal::realize",G_CALLBACK(widget_realized_cb),main_button,NULL);
 		retval = TRUE;
 	}
 

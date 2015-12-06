@@ -7,13 +7,13 @@ set (GETTEXT_PACKAGE "panther_launcher")
 set (RELEASE_NAME "panther_launcher")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (VERSION "1.3.0")
+set (VERSION "1.5.0")
 set (TESTSRCDIR "${CMAKE_SOURCE_DIR}")
 set (DOLLAR "$")
 
 configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
-set (VERSION "1.3.0")
+set (VERSION "1.5.0")
 add_definitions (${DEPS_CFLAGS})
 link_libraries ( ${DEPS_LIBRARIES} )
 link_directories ( ${DEPS_LIBRARY_DIRS} )
@@ -22,6 +22,9 @@ include (ValaVersion)
 ensure_vala_version ("0.26" MINIMUM)
 include (ValaPrecompile)
 
+if ((HAVE_ZEITGEIST))
+	set (VALA_PACKAGES ${VALA_PACKAGES} zeitgeist-1.0)
+endif ()
 set (VALA_PACKAGES ${VALA_PACKAGES} atk)
 set (VALA_PACKAGES ${VALA_PACKAGES} cairo)
 set (VALA_PACKAGES ${VALA_PACKAGES} gdk-3.0)
@@ -85,8 +88,9 @@ if (HAS_PLANK)
 	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAS_PLANK " )
 	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAS_PLANK " )
 endif ()
+set (COMPILE_OPTIONS ${COMPILE_OPTIONS} -g )
 
-set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DGMENU_I_KNOW_THIS_IS_UNSTABLE " )
+set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DGMENU_I_KNOW_THIS_IS_UNSTABLE -g " )
 
 vala_precompile(VALA_C panther_launcher
 	${APP_SOURCES}
@@ -99,12 +103,12 @@ OPTIONS
 add_executable(panther_launcher ${VALA_C})
 target_link_libraries( panther_launcher m )
 
+
 install(TARGETS
 	panther_launcher
 RUNTIME DESTINATION
-	${CMAKE_INSTALL_BINDIR}/
+	${CMAKE_INSTALL_BINDIR}
 )
-
 if(HAVE_VALADOC)
 	valadoc(panther_launcher
 		${CMAKE_BINARY_DIR}/valadoc/panther_launcher

@@ -1,5 +1,5 @@
 ### AutoVala Project ###
-autovala_version: 16
+autovala_version: 19
 project_name: panther_launcher
 vala_version: 0.26
 
@@ -14,8 +14,12 @@ custom: panther_gnome_shell/metadata.json share/gnome-shell/extensions/slingshot
 
 
 vala_binary: src/panther_launcher
-*version: 1.3.0
-compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
+*version: 1.5.0
+compile_options: -g
+compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE -g
+if (HAVE_ZEITGEIST)
+vala_check_package: zeitgeist-1.0
+end
 *vala_check_package: atk
 *vala_check_package: cairo
 *vala_check_package: gdk-3.0
@@ -74,8 +78,14 @@ compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 
 *doc: doc
 
+*dbus_service: data/com.rastersoft.panther.remotecontrol.service.base
+
 *scheme: data/org.rastersoft.panther.gschema.xml
 
 *full_icon: Hicolor Status data/icons/panther-categories-symbolic.svg
 *full_icon: Hicolor Status data/icons/panther-icons-symbolic.svg
+
+include: panther_applet/applet.txt
+
+source_dependency: /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc
 
