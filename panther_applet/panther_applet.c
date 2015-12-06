@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-extern char *envp[];
+extern char **environ;
 
 static gboolean applet_fill_cb (PanelApplet * applet, const gchar * iid, gpointer data);
 
@@ -23,8 +23,8 @@ static void launch(char silent) {
     }
 	if (pid == 0) {
 		// prelaunch panther launcher
-		execve("/usr/bin/panther_launcher",args,envp);
-		execve("/usr/local/bin/panther_launcher",args,envp);
+		execve("/usr/bin/panther_launcher",args,environ);
+		execve("/usr/local/bin/panther_launcher",args,environ);
 		exit(0);
 	}
 }
