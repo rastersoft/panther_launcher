@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include "dbus.h"
 
+static char **environ;
+
 static gboolean applet_fill_cb (PanelApplet * applet, const gchar * iid, gpointer data);
 
 PANEL_APPLET_IN_PROCESS_FACTORY ("PantherAppletFactory", PANEL_TYPE_APPLET, applet_fill_cb, NULL);
