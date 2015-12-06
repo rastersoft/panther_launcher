@@ -3,8 +3,7 @@
 #include <panel-applet.h>
 #include <unistd.h>
 #include <stdlib.h>
-
-extern char **environ;
+#include "dbus.h"
 
 static gboolean applet_fill_cb (PanelApplet * applet, const gchar * iid, gpointer data);
 
@@ -33,8 +32,26 @@ static void launch(char silent) {
 
 static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_data) {
 
-    launch(0);
+    GError *error = NULL;
 
+    ComRastersoftPantherRemotecontrol *proxy;
+    proxy = com_rastersoft_panther_remotecontrol_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                                  G_DBUS_PROXY_FLAGS_NONE,
+                                                  "com.rastersoft.panther.remotecontrol",
+                                                  "/com/rastersoft/panther/remotecontrol",
+                                                  NULL, /* GCancellable */
+                                                  &error);
+    if (proxy != NULL) {
+        error = NULL;
+        if (!com_rastersoft_panther_remotecontrol_call_do_show_sync(proxy,NULL,&error)) {
+            printf("Failed to call panther launcher using DBus: %d; %s\n",error->code,error->message);
+            launch(0);
+        }
+        g_object_unref(proxy);
+    } else {
+        printf("Error getting proxy to call panther launcher using DBus\n");
+        launch(0);
+    }
 }
 
 static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer data) {

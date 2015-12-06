@@ -111,6 +111,7 @@ public class RemoteControl : GLib.Object {
     }
 
     public void do_show() {
+        print("Called from DBus\n");
         app.activate();
     }
 }
