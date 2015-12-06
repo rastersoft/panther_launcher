@@ -3,6 +3,7 @@
 #include <panel-applet.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "dbus.h"
 
 extern char **environ;
 
@@ -33,7 +34,30 @@ static void launch(char silent) {
 
 static void button_clicked(GtkWidget *widget, GdkEvent  *event, gpointer   user_data) {
 
-    launch(0);
+    GDBusObjectManager *manager;
+    GError *error = NULL;
+
+    manager = object_manager_client_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                                      G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE,
+                                                      "com.rastersoft.panther.remotecontrol",
+                                                      "/com/rastersoft/panther/remotecontrol",
+                                                      NULL, /* GCancellable */
+                                                      &error);
+    if (manager != NULL) {
+        ComRastersoftPantherRemotecontrol *proxy;
+        error = NULL;
+        proxy = com_rastersoft_panther_remotecontrol_proxy_new_sync (G_DBUS_CONNECTION(manager),
+                                                      G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE,
+                                                      "com.rastersoft.panther.remotecontrol",
+                                                      "/com/rastersoft/panther/remotecontrol",
+                                                      NULL, /* GCancellable */
+                                                      &error);
+        if (proxy != NULL) {
+            com_rastersoft_panther_remotecontrol_call_do_show_sync(proxy,NULL,&error);
+            g_object_unref(proxy);
+        }
+        g_object_unref (manager);
+    }
 
 }
 
