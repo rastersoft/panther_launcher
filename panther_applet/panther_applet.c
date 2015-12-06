@@ -13,18 +13,20 @@ PANEL_APPLET_IN_PROCESS_FACTORY ("PantherAppletFactory", PANEL_TYPE_APPLET, appl
 static void launch(char silent) {
 
 	int pid=fork();
-	char *args[2];
+	char *args[3];
 
     if (silent == 0) {
-        args[0] = NULL;
-    } else {
-        args[0] = "-s";
         args[1] = NULL;
+    } else {
+        args[1] = "-s";
+        args[2] = NULL;
     }
 	if (pid == 0) {
 		// prelaunch panther launcher
-		execve("/usr/bin/panther_launcher",args,environ);
-		execve("/usr/local/bin/panther_launcher",args,environ);
+		args[0]="/usr/bin/panther_launcher";
+		execve(args[0],args,environ);
+		args[0]="/usr/local/bin/panther_launcher";
+		execve(args[0],args,environ);
 		exit(0);
 	}
 }
