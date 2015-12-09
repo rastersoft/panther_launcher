@@ -1,3 +1,7 @@
+* Version 1.6.0 (2015-12-09)
+   * Fixed translations in Debian and Ubuntu
+   * Gnome flashback applet now is translated
+   * Added last patches from upstream Slingshot
 * Version 1.5.0 (2015-12-06)
    * Added DBus remote control and DBus activation support
    * Gnome Shell extension now uses DBus to show the menu

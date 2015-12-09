@@ -16,16 +16,8 @@ Just type from a command line:
 	make
 	sudo make install
 
-If you want to install the Gnome Flashback applet, just enter the *panther_applet*
-folder and type:
-
-	make
-	sudo make install
-
-If you want to install the Gnome Shell extension, just enter the *panther_gnome_shell*
-folder and type:
-
-	./install
+By default, both gnome shell extension and gnome panel applet will be installed
+system-wide.
 
 ## Contacting the author
 
