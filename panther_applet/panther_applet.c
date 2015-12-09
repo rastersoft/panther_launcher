@@ -6,6 +6,7 @@
 #include <libintl.h>
 #include "dbus.h"
 
+#define _(String) gettext (String)
 static char **environ;
 
 static gboolean applet_fill_cb (PanelApplet * applet, const gchar * iid, gpointer data);
