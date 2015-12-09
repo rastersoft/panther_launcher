@@ -131,6 +131,9 @@ namespace Panther.Widgets {
                         type = 8;
                 }
 
+                if (match is Synapse.DesktopFilePlugin.ActionMatch)
+                    type = 10;
+
                 if ((list = categories.get (type)) == null) {
                     list = new Gee.LinkedList<Synapse.Match> ();
                     categories.set (type, list);
@@ -178,6 +181,9 @@ namespace Panther.Widgets {
                     case 8:
                         label = _("Internet");
                         break;
+                    case 10:
+                        label = _("Application Actions");
+                        break;
                 }
 
                 var header = new Gtk.Label (label);
@@ -193,7 +199,11 @@ namespace Panther.Widgets {
                 var old_selected = selected;
                 for (var i = 0; i < limit && i < list.size; i++) {
                     var match = list.get (i);
-
+                    if (type == 10) {
+                        show_action (new Backend.App.from_synapse_match (match));
+                        n_results++;
+                        continue;
+                    }
                     // expand the actions we get for UNKNOWN
                     if (match.match_type == Synapse.MatchType.UNKNOWN) {
                         var actions = Backend.SynapseSearch.find_actions_for_match (match);
@@ -228,6 +238,25 @@ namespace Panther.Widgets {
             items[app] = search_item;
 
         }
+
+        private void show_action (Backend.App app) {
+            var search_item = new SearchItem (app, "", true, app.match.title);
+            app.start_search.connect ((search, target) => start_search (search, target));
+            search_item.button_release_event.connect (() => {
+                if (!search_item.dragging) {
+                    ((Synapse.DesktopFilePlugin.ActionMatch) app.match).execute (null);
+                    app_launched ();
+                }
+
+                return true;
+            });
+
+            main_box.pack_start (search_item, false, false);
+            search_item.show_all ();
+
+            items[app] = search_item;        
+        }
+
 
         public void toggle_context (bool show) {
             var prev_y = vadjustment.value;
@@ -327,7 +356,10 @@ namespace Panther.Widgets {
          * @return indicates whether panther should now be hidden
          */
         public bool launch_selected () {
-
+            if (selected_app.action) {
+                ((Synapse.DesktopFilePlugin.ActionMatch) selected_app.app.match).execute (null);
+                return true;
+            }
             return selected_app.launch_app ();
 
         }
