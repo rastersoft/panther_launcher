@@ -3,6 +3,7 @@
 #include <panel-applet.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <libintl.h>
 #include "dbus.h"
 
 static char **environ;
@@ -60,6 +61,7 @@ static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer
 
 	gboolean retval = FALSE;
 	static gboolean set_name = FALSE;
+	GString *text;
 
 	if (g_strcmp0 (iid, "PantherApplet") == 0) {
 		if (!set_name) {
@@ -72,7 +74,11 @@ static gboolean applet_fill_cb (PanelApplet *applet, const gchar * iid, gpointer
 		GtkWidget* main_button = gtk_label_new(NULL);
 		gtk_widget_set_margin_start(main_button,3);
 		gtk_widget_set_margin_end(main_button,3);
-		gtk_label_set_markup(GTK_LABEL(main_button),"<b>Applications</b>");
+
+		text = g_string_new("");
+		g_string_printf(text,"<b>%s</b>",_("Applications"));
+		gtk_label_set_markup(GTK_LABEL(main_button),text->str);
+		g_string_free(text,TRUE);
 		GtkWidget* eventbox = gtk_event_box_new();
 		gtk_container_add(GTK_CONTAINER(applet),eventbox);
 		gtk_container_add(GTK_CONTAINER(eventbox),main_button);
