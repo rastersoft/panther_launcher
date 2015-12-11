@@ -176,9 +176,57 @@ static const _ExtendedGDBusMethodInfo _com_rastersoft_panther_remotecontrol_meth
   FALSE
 };
 
+static const _ExtendedGDBusArgInfo _com_rastersoft_panther_remotecontrol_method_info_do_ping_IN_ARG_n =
+{
+  {
+    -1,
+    (gchar *) "n",
+    (gchar *) "i",
+    NULL
+  },
+  FALSE
+};
+
+static const _ExtendedGDBusArgInfo * const _com_rastersoft_panther_remotecontrol_method_info_do_ping_IN_ARG_pointers[] =
+{
+  &_com_rastersoft_panther_remotecontrol_method_info_do_ping_IN_ARG_n,
+  NULL
+};
+
+static const _ExtendedGDBusArgInfo _com_rastersoft_panther_remotecontrol_method_info_do_ping_OUT_ARG_response =
+{
+  {
+    -1,
+    (gchar *) "response",
+    (gchar *) "i",
+    NULL
+  },
+  FALSE
+};
+
+static const _ExtendedGDBusArgInfo * const _com_rastersoft_panther_remotecontrol_method_info_do_ping_OUT_ARG_pointers[] =
+{
+  &_com_rastersoft_panther_remotecontrol_method_info_do_ping_OUT_ARG_response,
+  NULL
+};
+
+static const _ExtendedGDBusMethodInfo _com_rastersoft_panther_remotecontrol_method_info_do_ping =
+{
+  {
+    -1,
+    (gchar *) "DoPing",
+    (GDBusArgInfo **) &_com_rastersoft_panther_remotecontrol_method_info_do_ping_IN_ARG_pointers,
+    (GDBusArgInfo **) &_com_rastersoft_panther_remotecontrol_method_info_do_ping_OUT_ARG_pointers,
+    NULL
+  },
+  "handle-do-ping",
+  FALSE
+};
+
 static const _ExtendedGDBusMethodInfo * const _com_rastersoft_panther_remotecontrol_method_info_pointers[] =
 {
   &_com_rastersoft_panther_remotecontrol_method_info_do_show,
+  &_com_rastersoft_panther_remotecontrol_method_info_do_ping,
   NULL
 };
 
@@ -236,6 +284,7 @@ com_rastersoft_panther_remotecontrol_override_properties (GObjectClass *klass, g
 /**
  * ComRastersoftPantherRemotecontrolIface:
  * @parent_iface: The parent interface.
+ * @handle_do_ping: Handler for the #ComRastersoftPantherRemotecontrol::handle-do-ping signal.
  * @handle_do_show: Handler for the #ComRastersoftPantherRemotecontrol::handle-do-show signal.
  *
  * Virtual table for the D-Bus interface <link linkend="gdbus-interface-com-rastersoft-panther-remotecontrol.top_of_page">com.rastersoft.panther.remotecontrol</link>.
@@ -269,6 +318,29 @@ com_rastersoft_panther_remotecontrol_default_init (ComRastersoftPantherRemotecon
     G_TYPE_BOOLEAN,
     1,
     G_TYPE_DBUS_METHOD_INVOCATION);
+
+  /**
+   * ComRastersoftPantherRemotecontrol::handle-do-ping:
+   * @object: A #ComRastersoftPantherRemotecontrol.
+   * @invocation: A #GDBusMethodInvocation.
+   * @arg_n: Argument passed by remote caller.
+   *
+   * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-com-rastersoft-panther-remotecontrol.DoPing">DoPing()</link> D-Bus method.
+   *
+   * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to @invocation and eventually call com_rastersoft_panther_remotecontrol_complete_do_ping() or e.g. g_dbus_method_invocation_return_error() on it) and no order signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+   *
+   * Returns: %TRUE if the invocation was handled, %FALSE to let other signal handlers run.
+   */
+  g_signal_new ("handle-do-ping",
+    G_TYPE_FROM_INTERFACE (iface),
+    G_SIGNAL_RUN_LAST,
+    G_STRUCT_OFFSET (ComRastersoftPantherRemotecontrolIface, handle_do_ping),
+    g_signal_accumulator_true_handled,
+    NULL,
+    g_cclosure_marshal_generic,
+    G_TYPE_BOOLEAN,
+    2,
+    G_TYPE_DBUS_METHOD_INVOCATION, G_TYPE_INT);
 
 }
 
@@ -365,6 +437,110 @@ _out:
 }
 
 /**
+ * com_rastersoft_panther_remotecontrol_call_do_ping:
+ * @proxy: A #ComRastersoftPantherRemotecontrolProxy.
+ * @arg_n: Argument to pass with the method invocation.
+ * @cancellable: (allow-none): A #GCancellable or %NULL.
+ * @callback: A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+ * @user_data: User data to pass to @callback.
+ *
+ * Asynchronously invokes the <link linkend="gdbus-method-com-rastersoft-panther-remotecontrol.DoPing">DoPing()</link> D-Bus method on @proxy.
+ * When the operation is finished, @callback will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
+ * You can then call com_rastersoft_panther_remotecontrol_call_do_ping_finish() to get the result of the operation.
+ *
+ * See com_rastersoft_panther_remotecontrol_call_do_ping_sync() for the synchronous, blocking version of this method.
+ */
+void
+com_rastersoft_panther_remotecontrol_call_do_ping (
+    ComRastersoftPantherRemotecontrol *proxy,
+    gint arg_n,
+    GCancellable *cancellable,
+    GAsyncReadyCallback callback,
+    gpointer user_data)
+{
+  g_dbus_proxy_call (G_DBUS_PROXY (proxy),
+    "DoPing",
+    g_variant_new ("(i)",
+                   arg_n),
+    G_DBUS_CALL_FLAGS_NONE,
+    -1,
+    cancellable,
+    callback,
+    user_data);
+}
+
+/**
+ * com_rastersoft_panther_remotecontrol_call_do_ping_finish:
+ * @proxy: A #ComRastersoftPantherRemotecontrolProxy.
+ * @out_response: (out): Return location for return parameter or %NULL to ignore.
+ * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to com_rastersoft_panther_remotecontrol_call_do_ping().
+ * @error: Return location for error or %NULL.
+ *
+ * Finishes an operation started with com_rastersoft_panther_remotecontrol_call_do_ping().
+ *
+ * Returns: (skip): %TRUE if the call succeded, %FALSE if @error is set.
+ */
+gboolean
+com_rastersoft_panther_remotecontrol_call_do_ping_finish (
+    ComRastersoftPantherRemotecontrol *proxy,
+    gint *out_response,
+    GAsyncResult *res,
+    GError **error)
+{
+  GVariant *_ret;
+  _ret = g_dbus_proxy_call_finish (G_DBUS_PROXY (proxy), res, error);
+  if (_ret == NULL)
+    goto _out;
+  g_variant_get (_ret,
+                 "(i)",
+                 out_response);
+  g_variant_unref (_ret);
+_out:
+  return _ret != NULL;
+}
+
+/**
+ * com_rastersoft_panther_remotecontrol_call_do_ping_sync:
+ * @proxy: A #ComRastersoftPantherRemotecontrolProxy.
+ * @arg_n: Argument to pass with the method invocation.
+ * @out_response: (out): Return location for return parameter or %NULL to ignore.
+ * @cancellable: (allow-none): A #GCancellable or %NULL.
+ * @error: Return location for error or %NULL.
+ *
+ * Synchronously invokes the <link linkend="gdbus-method-com-rastersoft-panther-remotecontrol.DoPing">DoPing()</link> D-Bus method on @proxy. The calling thread is blocked until a reply is received.
+ *
+ * See com_rastersoft_panther_remotecontrol_call_do_ping() for the asynchronous version of this method.
+ *
+ * Returns: (skip): %TRUE if the call succeded, %FALSE if @error is set.
+ */
+gboolean
+com_rastersoft_panther_remotecontrol_call_do_ping_sync (
+    ComRastersoftPantherRemotecontrol *proxy,
+    gint arg_n,
+    gint *out_response,
+    GCancellable *cancellable,
+    GError **error)
+{
+  GVariant *_ret;
+  _ret = g_dbus_proxy_call_sync (G_DBUS_PROXY (proxy),
+    "DoPing",
+    g_variant_new ("(i)",
+                   arg_n),
+    G_DBUS_CALL_FLAGS_NONE,
+    -1,
+    cancellable,
+    error);
+  if (_ret == NULL)
+    goto _out;
+  g_variant_get (_ret,
+                 "(i)",
+                 out_response);
+  g_variant_unref (_ret);
+_out:
+  return _ret != NULL;
+}
+
+/**
  * com_rastersoft_panther_remotecontrol_complete_do_show:
  * @object: A #ComRastersoftPantherRemotecontrol.
  * @invocation: (transfer full): A #GDBusMethodInvocation.
@@ -380,6 +556,27 @@ com_rastersoft_panther_remotecontrol_complete_do_show (
 {
   g_dbus_method_invocation_return_value (invocation,
     g_variant_new ("()"));
+}
+
+/**
+ * com_rastersoft_panther_remotecontrol_complete_do_ping:
+ * @object: A #ComRastersoftPantherRemotecontrol.
+ * @invocation: (transfer full): A #GDBusMethodInvocation.
+ * @response: Parameter to return.
+ *
+ * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-com-rastersoft-panther-remotecontrol.DoPing">DoPing()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+ *
+ * This method will free @invocation, you cannot use it afterwards.
+ */
+void
+com_rastersoft_panther_remotecontrol_complete_do_ping (
+    ComRastersoftPantherRemotecontrol *object,
+    GDBusMethodInvocation *invocation,
+    gint response)
+{
+  g_dbus_method_invocation_return_value (invocation,
+    g_variant_new ("(i)",
+                   response));
 }
 
 /* ------------------------------------------------------------------------ */

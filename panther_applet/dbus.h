@@ -28,6 +28,11 @@ struct _ComRastersoftPantherRemotecontrolIface
 {
   GTypeInterface parent_iface;
 
+  gboolean (*handle_do_ping) (
+    ComRastersoftPantherRemotecontrol *object,
+    GDBusMethodInvocation *invocation,
+    gint arg_n);
+
   gboolean (*handle_do_show) (
     ComRastersoftPantherRemotecontrol *object,
     GDBusMethodInvocation *invocation);
@@ -45,6 +50,11 @@ void com_rastersoft_panther_remotecontrol_complete_do_show (
     ComRastersoftPantherRemotecontrol *object,
     GDBusMethodInvocation *invocation);
 
+void com_rastersoft_panther_remotecontrol_complete_do_ping (
+    ComRastersoftPantherRemotecontrol *object,
+    GDBusMethodInvocation *invocation,
+    gint response);
+
 
 
 /* D-Bus method calls: */
@@ -61,6 +71,26 @@ gboolean com_rastersoft_panther_remotecontrol_call_do_show_finish (
 
 gboolean com_rastersoft_panther_remotecontrol_call_do_show_sync (
     ComRastersoftPantherRemotecontrol *proxy,
+    GCancellable *cancellable,
+    GError **error);
+
+void com_rastersoft_panther_remotecontrol_call_do_ping (
+    ComRastersoftPantherRemotecontrol *proxy,
+    gint arg_n,
+    GCancellable *cancellable,
+    GAsyncReadyCallback callback,
+    gpointer user_data);
+
+gboolean com_rastersoft_panther_remotecontrol_call_do_ping_finish (
+    ComRastersoftPantherRemotecontrol *proxy,
+    gint *out_response,
+    GAsyncResult *res,
+    GError **error);
+
+gboolean com_rastersoft_panther_remotecontrol_call_do_ping_sync (
+    ComRastersoftPantherRemotecontrol *proxy,
+    gint arg_n,
+    gint *out_response,
     GCancellable *cancellable,
     GError **error);
 

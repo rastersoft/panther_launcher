@@ -35,6 +35,10 @@ const Util = imports.misc.util;
 const MyIface = '<node>\
 <interface name="com.rastersoft.panther.remotecontrol">\
   <method name="DoShow" />\
+  <method name="DoPing" >\
+    <arg name="n" direction="in" type="i"/>\
+    <arg name="response" direction="out" type="i"/>\
+  </method>\
 </interface>\
 </node>';
 
@@ -66,7 +70,9 @@ const LauncherButton = new Lang.Class({
         // At startup, prelaunch panther to make it faster the first time the
         // user wants it (panther will remain in background, and the new
         // launches will just instruct it to show, instead of being reloaded
-        Util.spawn(['panther_launcher', '-s']);
+        // Util.spawn(['panther_launcher', '-s']);
+        let instance = new MyProxy(Gio.DBus.session, 'com.rastersoft.panther.remotecontrol','/com/rastersoft/panther/remotecontrol');
+        instance.DoPingSync(0);
 
         let mode = Shell.ActionMode ? Shell.ActionMode.NORMAL : Shell.KeyBindingMode.ALL;
         let flags = Meta.KeyBindingFlags.NONE;
@@ -93,8 +99,7 @@ const LauncherButton = new Lang.Class({
     },
 
     launch_function: function () {
-        let instance = new MyProxy(Gio.DBus.session, 'com.rastersoft.panther.remotecontrol',
-'/com/rastersoft/panther/remotecontrol');
+        let instance = new MyProxy(Gio.DBus.session, 'com.rastersoft.panther.remotecontrol','/com/rastersoft/panther/remotecontrol');
         instance.DoShowSync();
     },
 });
