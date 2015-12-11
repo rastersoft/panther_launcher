@@ -6,7 +6,7 @@ Build-Depends: build-essential, po-debconf, valac-0.28, libatk1.0-dev, libcairo2
 
 Package: panther-launcher
 Architecture: any
-Version: 1.6.0
+Version: 1.7.0
 Depends: libglib2.0-0, libatk1.0-0, libcairo2, libgtk-3-0, libpangocairo-1.0-0, libpango-1.0-0, libgdk-pixbuf2.0-0, libcairo-gobject2, libgee-0.8-2, libjson-glib-1.0-0, libgnome-menu-3-0, libsoup2.4-1, libx11-6, libc6, gnome-menus
 Description: A fork from Slingshot Launcher. Its main change is that it doesn't
  depend on Gala, Granite or other libraries not available in regular

@@ -1,8 +1,16 @@
-panther_launcher (1.6.0-Debian1) sid; urgency=low
+panther-launcher (1.7.0-Debian1) sid; urgency=low
 
-  * Changes made
+  * Now uses only DBus for both activating and pre-launching panther launcher from applet and extension
 
- -- Sergio Costas <rastersoft@gmail.com>  Wed, 09 Dec 2015 23:16:01 +0100
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Fry, 11 Dec 2015 23:55:00 +0200
+
+panther-launcher (1.6.0-Debian1) sid; urgency=low
+
+  * Fixed translations in Debian and Ubuntu
+  * Gnome flashback applet now is translated
+  * Added last patches from upstream Slingshot
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Wed, 09 Dec 2015 23:55:00 +0200
 
 panther-launcher (1.5.0-Debian1) sid; urgency=low
 

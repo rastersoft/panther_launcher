@@ -12,12 +12,15 @@ Just type from a command line:
 
 	mkdir install
 	cd install
-	cmake ..
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	make
 	sudo make install
 
 By default, both gnome shell extension and gnome panel applet will be installed
 system-wide.
+
+It is important to install it in /usr instead of use /usr/local, to ensure that
+DBus activation works fine.
 
 ## Contacting the author
 

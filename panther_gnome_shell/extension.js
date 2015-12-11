@@ -70,7 +70,7 @@ const LauncherButton = new Lang.Class({
         // At startup, prelaunch panther to make it faster the first time the
         // user wants it (panther will remain in background, and the new
         // launches will just instruct it to show, instead of being reloaded
-        // Util.spawn(['panther_launcher', '-s']);
+        // Util.spawn(['panther_launcher', '-s']); // now just use a call using DBus, which will activate it automagically
         let instance = new MyProxy(Gio.DBus.session, 'com.rastersoft.panther.remotecontrol','/com/rastersoft/panther/remotecontrol');
         instance.DoPingSync(0);
 
