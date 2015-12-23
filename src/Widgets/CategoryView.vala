@@ -41,6 +41,8 @@ public class Panther.Widgets.CategoryView : Gtk.EventBox {
 
         container = new Gtk.Grid ();
         container.hexpand = true;
+        container.row_homogeneous = false;
+        container.column_homogeneous = false;
         container.orientation = Gtk.Orientation.HORIZONTAL;
         separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
 

@@ -61,7 +61,7 @@ public class Panther.Widgets.Sidebar : Gtk.TreeView {
         set_show_expanders (false);
         set_level_indentation (8);
 
-        hexpand = true;
+        hexpand = false;
         get_style_context ().add_class ("sidebar");
 
         var cell = new Gtk.CellRendererText ();
