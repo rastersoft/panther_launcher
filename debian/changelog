@@ -1,3 +1,9 @@
+panther-launcher (1.8.0-Debian1) sid; urgency=low
+
+  * Now ensures that the cathegories width is constant
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Wed, 23 Dec 2015 23:55:00 +0200
+
 panther-launcher (1.7.0-Debian1) sid; urgency=low
 
   * Now uses only DBus for both activating and pre-launching panther launcher from applet and extension

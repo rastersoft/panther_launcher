@@ -1,3 +1,5 @@
+* Version 1.8.0 (2015-12-23)
+   * Now ensures that the cathegories width is constant
 * Version 1.7.0 (2015-12-11)
    * Now uses only DBus for both activating and pre-launching panther launcher from applet and extension
 * Version 1.6.0 (2015-12-09)

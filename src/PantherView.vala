@@ -173,8 +173,9 @@ namespace Panther {
             primary_monitor = screen.get_primary_monitor ();
             Gdk.Rectangle geometry;
             screen.get_monitor_geometry (primary_monitor, out geometry);
-            if (Panther.settings.screen_resolution != @"$(geometry.width)x$(geometry.height)")
+            if (Panther.settings.screen_resolution != @"$(geometry.width)x$(geometry.height)") {
                 setup_size ();
+            }
 
             height_request = calculate_grid_height () + Pixels.BOTTOM_SPACE;
             setup_ui ();
@@ -199,12 +200,12 @@ namespace Panther {
             screen.get_monitor_geometry (primary_monitor, out geometry);
             Panther.settings.screen_resolution = @"$(geometry.width)x$(geometry.height)";
             default_columns = 6;
-            default_rows = 4;
+            default_rows = 5;
             while ((calculate_grid_width () >= 2 * geometry.width / 3)) {
                 default_columns--;
             }
 
-            while ((calculate_grid_height () >= 2 * geometry.width / 3)) {
+            while ((calculate_grid_height () >= 2 * geometry.height / 3)) {
                 default_rows--;
             }
 
@@ -222,6 +223,8 @@ namespace Panther {
             // Create the base container
             container = new Gtk.Grid ();
             container.row_spacing = 12;
+            container.row_homogeneous = false;
+            container.column_homogeneous = false;
             container.margin_top = 12;
 
             // Add top bar
@@ -281,10 +284,6 @@ namespace Panther {
 
             event_box = new Gtk.EventBox ();
             event_box.add (fcontainer);
-            // Add the container to the dialog's content area
-
-            /*ref_grid = new Gtk.Grid ();
-            this.add (ref_grid);*/
 
             this.add (event_box);
 
