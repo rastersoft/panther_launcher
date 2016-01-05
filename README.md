@@ -22,6 +22,11 @@ system-wide.
 It is important to install it in /usr instead of use /usr/local, to ensure that
 DBus activation works fine.
 
+## Changing the location of the launcher's window
+
+It is possible to move the window to the bottom part of the screen. To do so,
+just use *dconf* to set *org.rastersoft.panther.show-at-top* to *false*.
+
 ## Contacting the author
 
 Created by Raster Software Vigo (rastersoft) 

@@ -26,11 +26,13 @@ namespace Panther {
         public bool show_category_filter { get; set; }
         public bool use_category { get; set; }
         public string screen_resolution { get; set; }
+        public bool show_at_top {get; set; }
 
         private GLib.Settings panther_settings;
 
         public signal void columns_changed();
         public signal void rows_changed();
+        public signal void show_at_changed();
 
         public Settings () {
             this.panther_settings = new GLib.Settings("org.rastersoft.panther");
@@ -40,12 +42,16 @@ namespace Panther {
             this.panther_settings.bind("show-category-filter",this,"show_category_filter",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("use-category",this,"use_category",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("screen-resolution",this,"screen_resolution",SettingsBindFlags.DEFAULT);
+            this.panther_settings.bind("show-at-top",this,"show_at_top",SettingsBindFlags.DEFAULT);
             this.panther_settings.changed.connect((key) => {
                 if (key == "rows") {
                     this.rows_changed();
                 }
                 if (key == "columns") {
                     this.columns_changed();
+                }
+                if (key == "show-at-top") {
+                    this.show_at_changed();
                 }
             });
         }

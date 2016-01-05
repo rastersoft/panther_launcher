@@ -1,5 +1,8 @@
+* Version 1.9.0 (2016-01-05)
+   * Allows to move the launcher to the bottom part of the screen
 * Version 1.8.0 (2015-12-23)
    * Now ensures that the cathegories width is constant
+   * Now the size doesn't change when the screen resolution changes (example: after launching a game)
 * Version 1.7.0 (2015-12-11)
    * Now uses only DBus for both activating and pre-launching panther launcher from applet and extension
 * Version 1.6.0 (2015-12-09)

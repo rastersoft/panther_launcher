@@ -1,6 +1,13 @@
+panther-launcher (1.9.0-Debian1) sid; urgency=low
+
+  * Allows to move the launcher to the bottom part of the screen
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Tue, 05 Jan 2016 23:55:00 +0200
+
 panther-launcher (1.8.0-Debian1) sid; urgency=low
 
   * Now ensures that the cathegories width is constant
+  * Now the size doesn't change when the screen resolution changes (example: after launching a game)
 
  -- Sergio Costas Rodriguez <raster@rastersoft.com>  Wed, 23 Dec 2015 23:55:00 +0200
 

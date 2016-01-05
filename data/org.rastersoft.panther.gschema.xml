@@ -25,6 +25,11 @@
             <summary>Show the category view by default</summary>
             <description>Save the current view of the launcher.</description>
         </key>
+        <key name="show-at-top" type="b">
+            <default>true</default>
+            <summary>Show the launcher at the top</summary>
+            <description>Show the launcher at the top.</description>
+        </key>
         <key name="screen-resolution" type="s">
             <default>""</default>
             <summary>The last resolution of the screen</summary>
