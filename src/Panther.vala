@@ -19,7 +19,7 @@
 using Gtk;
 using GLib;
 
-// project version = 1.9.0
+// project version = 1.10.0
 
 Panther.Panther app;
 
@@ -36,7 +36,6 @@ public class Panther.Panther : Gtk.Application {
 
     private int view_width;
     private int view_height;
-    private bool show_at_top;
 
     construct {
         application_id = "com.rastersoft.panther";
@@ -47,28 +46,14 @@ public class Panther.Panther : Gtk.Application {
     }
 
     private bool realize_view(Cairo.Context? cr) {
-    
-    
+
         bool move_window = false;
         Gtk.Allocation alloc;
         this.view.get_allocation(out alloc);
         if ((alloc.width != this.view_width) || (alloc.height != this.view_height)) {
             this.view_width = alloc.width;
             this.view_height = alloc.height;
-            move_window = true;
-        }
-        if (settings.show_at_top != this.show_at_top) {
-            this.show_at_top = settings.show_at_top;
-            move_window = true;
-        }
-        if (move_window) {
-            if (this.show_at_top) {
-                this.view.move(0,0);
-            } else {
-                var scr=this.view.get_screen();
-                var r = scr.get_monitor_workarea(0);
-                this.view.move(0,r.height - this.view_height);
-            }
+            this.view.reposition();
         }
         return false;
     
@@ -78,7 +63,6 @@ public class Panther.Panther : Gtk.Application {
         if (this.get_windows () == null) {
             this.view_width = -1;
             this.view_height = -1;
-            this.show_at_top = settings.show_at_top;
             this.view = new PantherView ();
             this.view.set_application (this);
             this.view.draw.connect_after(this.realize_view);

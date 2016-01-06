@@ -1,3 +1,5 @@
+* Version 1.10.0 (2016-01-06)
+   * Fixes a bug when moving the launcher to the bottom part
 * Version 1.9.0 (2016-01-05)
    * Allows to move the launcher to the bottom part of the screen
 * Version 1.8.0 (2015-12-23)

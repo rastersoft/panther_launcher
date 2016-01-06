@@ -1,3 +1,9 @@
+panther-launcher (1.10.0-Debian1) sid; urgency=low
+
+  * Fixes a bug when moving the launcher to the bottom part
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Wed, 06 Jan 2016 23:55:00 +0200
+
 panther-launcher (1.9.0-Debian1) sid; urgency=low
 
   * Allows to move the launcher to the bottom part of the screen
