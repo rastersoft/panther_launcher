@@ -47,7 +47,6 @@ public class Panther.Panther : Gtk.Application {
 
     private bool realize_view(Cairo.Context? cr) {
 
-        bool move_window = false;
         Gtk.Allocation alloc;
         this.view.get_allocation(out alloc);
         if ((alloc.width != this.view_width) || (alloc.height != this.view_height)) {
@@ -56,7 +55,6 @@ public class Panther.Panther : Gtk.Application {
             this.view.reposition();
         }
         return false;
-    
     }
 
     protected override void activate () {

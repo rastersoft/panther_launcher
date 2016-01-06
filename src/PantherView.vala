@@ -432,25 +432,19 @@ namespace Panther {
         public void reposition () {
             debug("Repositioning");
 
-            Gdk.Rectangle monitor_dimensions;
-            screen.get_monitor_geometry (this.screen.get_primary_monitor(), out monitor_dimensions);
+            var workspace_area = this.get_screen().get_monitor_workarea(this.screen.get_primary_monitor());
 
             int new_y;
             if (Panther.settings.show_at_top) {
-                new_y = monitor_dimensions.y;
+                new_y = workspace_area.y;
             } else {
-                Gtk.Allocation alloc;
-                this.get_allocation(out alloc);
-                var scr=this.get_screen();
-                var r = scr.get_monitor_workarea(0);
-                new_y = monitor_dimensions.y + r.height - alloc.height;
+                new_y = workspace_area.y + workspace_area.height - this.get_window().get_height();
             }
 
             if (get_style_context ().direction == Gtk.TextDirection.LTR) {
-                // Added 36px to y to be aligned with other popovers.
-                this.move (monitor_dimensions.x, new_y);
+                this.move (workspace_area.x, new_y);
             } else {
-                this.move (monitor_dimensions.x + monitor_dimensions.width - this.get_window ().get_width (), new_y);
+                this.move (workspace_area.x + workspace_area.width - this.get_window ().get_width (), new_y);
             }
         }
 
