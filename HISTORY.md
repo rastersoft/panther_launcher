@@ -1,3 +1,5 @@
+* Version 1.10.1 (2016-03-30)
+   * Added compatibility with Gnome 3.20
 * Version 1.10.0 (2016-01-06)
    * Fixes a bug when moving the launcher to the bottom part
 * Version 1.9.0 (2016-01-05)
