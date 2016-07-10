@@ -43,6 +43,8 @@ public class Panther.Panther : Gtk.Application {
 
     public Panther () {
         settings = new Settings ();
+        Pixels.ITEM_SIZE = settings.icon_size * 2;
+        Pixels.SIDEBAR_WIDTH = Pixels.PADDING + Pixels.ITEM_SIZE - Pixels.SIDEBAR_GRID_PADDING - 1;
     }
 
     private bool realize_view(Cairo.Context? cr) {

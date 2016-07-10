@@ -16,6 +16,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+using Posix;
+
 namespace Panther {
 
     public class Settings : Object {
@@ -52,6 +54,9 @@ namespace Panther {
                 }
                 if (key == "show-at-top") {
                     this.show_at_changed();
+                }
+                if (key == "icon-size") {
+                    Posix.exit(0);
                 }
             });
         }

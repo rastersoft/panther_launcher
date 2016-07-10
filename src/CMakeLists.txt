@@ -22,6 +22,7 @@ include (ValaVersion)
 ensure_vala_version ("0.26" MINIMUM)
 include (ValaPrecompile)
 
+set (VALA_PACKAGES ${VALA_PACKAGES} posix)
 if ((HAVE_ZEITGEIST))
 	set (VALA_PACKAGES ${VALA_PACKAGES} zeitgeist-1.0)
 endif ()
