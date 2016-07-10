@@ -17,6 +17,7 @@
 //
 
 using Gtk;
+using Gdk;
 using GLib;
 
 // project version = 1.10.1
@@ -45,6 +46,11 @@ public class Panther.Panther : Gtk.Application {
         settings = new Settings ();
         Pixels.ITEM_SIZE = settings.icon_size * 2;
         Pixels.SIDEBAR_WIDTH = Pixels.PADDING + Pixels.ITEM_SIZE - Pixels.SIDEBAR_GRID_PADDING - 1;
+        var display = Gdk.Screen.get_default ();
+
+        settings.rows = (display.get_height() * 4 / 9) / Pixels.ITEM_SIZE;
+        settings.columns = (display.get_width() * 2 / 5) / Pixels.ITEM_SIZE;
+
     }
 
     private bool realize_view(Cairo.Context? cr) {
