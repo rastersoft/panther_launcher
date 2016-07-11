@@ -153,7 +153,7 @@ namespace Panther {
             Gdk.Rectangle geometry;
             screen.get_monitor_geometry (primary_monitor, out geometry);
             if (Panther.settings.rows_int == 0) {
-                Panther.settings.rows = (geometry.height * 4 / 9) / Pixels.ITEM_SIZE;
+                Panther.settings.rows = (geometry.height * 5 / 9) / Pixels.ITEM_SIZE;
             } else {
                 Panther.settings.rows = Panther.settings.rows_int;
             }
