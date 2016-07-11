@@ -22,8 +22,12 @@ namespace Panther {
 
     public class Settings : Object {
 
-        public int columns { get; set; }
-        public int rows { get; set; }
+
+        public int columns;
+        public int rows;
+        public int columns_int { get; set; }
+        public int rows_int { get; set; }
+
         public int icon_size { get; set; }
         public bool show_category_filter { get; set; }
         public bool use_category { get; set; }
@@ -38,18 +42,21 @@ namespace Panther {
 
         public Settings () {
             this.panther_settings = new GLib.Settings("org.rastersoft.panther");
-            this.panther_settings.bind("rows",this,"rows",SettingsBindFlags.DEFAULT);
-            this.panther_settings.bind("columns",this,"columns",SettingsBindFlags.DEFAULT);
+            this.panther_settings.bind("rows",this,"rows_int",SettingsBindFlags.DEFAULT);
+            this.panther_settings.bind("columns",this,"columns_int",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("icon-size",this,"icon_size",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("show-category-filter",this,"show_category_filter",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("use-category",this,"use_category",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("screen-resolution",this,"screen_resolution",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("show-at-top",this,"show_at_top",SettingsBindFlags.DEFAULT);
+
             this.panther_settings.changed.connect((key) => {
                 if (key == "rows") {
+                    this.rows = this.rows_int;
                     this.rows_changed();
                 }
                 if (key == "columns") {
+                    this.columns = this.columns_int;
                     this.columns_changed();
                 }
                 if (key == "show-at-top") {

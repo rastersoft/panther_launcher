@@ -149,6 +149,21 @@ namespace Panther {
 
         public PantherView () {
 
+            primary_monitor = screen.get_primary_monitor ();
+            Gdk.Rectangle geometry;
+            screen.get_monitor_geometry (primary_monitor, out geometry);
+            if (Panther.settings.rows_int == 0) {
+                Panther.settings.rows = (geometry.height * 4 / 9) / Pixels.ITEM_SIZE;
+            } else {
+                Panther.settings.rows = Panther.settings.rows_int;
+            }
+
+            if (Panther.settings.columns_int == 0) {
+                Panther.settings.columns = (geometry.width * 2 / 5) / Pixels.ITEM_SIZE;
+            } else {
+                Panther.settings.columns = Panther.settings.columns_int;
+            }
+
             // Window properties
             this.title = "Panther";
             this.skip_pager_hint = true;
@@ -170,9 +185,6 @@ namespace Panther {
             categories = app_system.get_categories ();
             apps = app_system.get_apps ();
 
-            primary_monitor = screen.get_primary_monitor ();
-            Gdk.Rectangle geometry;
-            screen.get_monitor_geometry (primary_monitor, out geometry);
             if (Panther.settings.screen_resolution != @"$(geometry.width)x$(geometry.height)") {
                 setup_size ();
             }

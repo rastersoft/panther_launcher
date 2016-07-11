@@ -1,14 +1,14 @@
 <schemalist>
 	<schema path="/org/rastersoft/panther/" id="org.rastersoft.panther" gettext-domain="panther">
         <key name="columns" type="i">
-            <default>5</default>
+            <default>0</default>
             <summary>The default number of columns</summary>
-            <description>This value needs to be greater than 3 to be effective.</description>
+            <description>Setting this value to 0 will automatically set the number of columns to the best value, based on the screen size.</description>
         </key>
         <key name="rows" type="i">
-            <default>3</default>
+            <default>0</default>
             <summary>The default number of rows</summary>
-            <description>This value needs to be greater than 1 to be effective.</description>
+            <description>Setting this value to 0 will automatically set the number of rows to the best value, based on the screen size.</description>
         </key>
         <key name="icon-size" type="i">
             <default>64</default>
