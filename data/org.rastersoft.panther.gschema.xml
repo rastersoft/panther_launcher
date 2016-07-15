@@ -15,6 +15,11 @@
             <summary>The default icon size of apps</summary>
             <description>This value manages the size of the icons in Panther.</description>
         </key>
+	<key name="font-size" type="d">
+            <default>0.0</default>
+            <summary>The default font size for apps</summary>
+            <description>This value manages the size of the fonts in Panther. If it is zero, it will use the system value.</description>
+        </key>
         <key name="show-category-filter" type="b">
             <default>true</default>
             <summary>Show the category switcher or not</summary>

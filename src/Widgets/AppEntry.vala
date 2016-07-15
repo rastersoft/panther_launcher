@@ -67,7 +67,15 @@ public class Panther.Widgets.AppEntry : Gtk.Button {
 
         get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        app_label = new Gtk.Label (app_name);
+        if (Panther.settings.font_size <= 0.001) {
+            app_label = new Gtk.Label (app_name);
+            app_label.use_markup = false;
+        } else {
+            var texto = "<span font_size=\"%d\">%s</span>".printf((int)(Panther.settings.font_size * 1000),app_name);
+            app_label = new Gtk.Label(null);
+            app_label.set_markup(texto);
+        }
+
         app_label.halign = Gtk.Align.CENTER;
         app_label.justify = Gtk.Justification.CENTER;
         app_label.set_line_wrap (true);

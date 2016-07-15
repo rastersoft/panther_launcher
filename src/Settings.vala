@@ -27,6 +27,7 @@ namespace Panther {
         public int rows;
         public int columns_int { get; set; }
         public int rows_int { get; set; }
+        public double font_size { get; set; }
 
         public int icon_size { get; set; }
         public bool show_category_filter { get; set; }
@@ -45,6 +46,7 @@ namespace Panther {
             this.panther_settings.bind("rows",this,"rows_int",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("columns",this,"columns_int",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("icon-size",this,"icon_size",SettingsBindFlags.DEFAULT);
+            this.panther_settings.bind("font-size",this,"font_size",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("show-category-filter",this,"show_category_filter",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("use-category",this,"use_category",SettingsBindFlags.DEFAULT);
             this.panther_settings.bind("screen-resolution",this,"screen_resolution",SettingsBindFlags.DEFAULT);
@@ -63,6 +65,9 @@ namespace Panther {
                     this.show_at_changed();
                 }
                 if (key == "icon-size") {
+                    Posix.exit(0);
+                }
+                if (key == "font-size") {
                     Posix.exit(0);
                 }
             });
