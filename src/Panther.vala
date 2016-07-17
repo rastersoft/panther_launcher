@@ -20,7 +20,7 @@ using Gtk;
 using Gdk;
 using GLib;
 
-// project version = 1.10.1
+// project version = 1.11.0
 
 Panther.Panther app;
 
