@@ -24,7 +24,7 @@ BuildRequires: gettext
 BuildRequires: pkgconfig
 BuildRequires: make
 BuildRequires: intltool
-BuildRequires: gnome-panel-devel
+BuildRequires: gnome-desktop3-devel
 
 Requires: atk
 Requires: glib2

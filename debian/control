@@ -2,7 +2,7 @@ Source: panther-launcher
 Maintainer: Sergio Costas <rastersoft@gmail.com>
 Priority: optional
 Section: misc
-Build-Depends: build-essential, po-debconf, valac-0.28, libatk1.0-dev, libcairo2-dev, libgtk-3-dev, libgdk-pixbuf2.0-dev, libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libgnome-menu-3-dev, libsoup2.4-dev, libpango1.0-dev, libx11-dev, cmake, gettext, pkg-config, gcc, g++, make, intltool, libpanel-applet-dev
+Build-Depends: build-essential, po-debconf, valac, libatk1.0-dev, libcairo2-dev, libgtk-3-dev, libgdk-pixbuf2.0-dev, libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libgnome-menu-3-dev, libsoup2.4-dev, libpango1.0-dev, libx11-dev, cmake, gettext, pkg-config, gcc, g++, make, intltool, libpanel-applet-dev
 
 Package: panther-launcher
 Architecture: any
