@@ -20,7 +20,7 @@ using Gtk;
 using Gdk;
 using GLib;
 
-// project version = 1.11.0
+// project version = 1.11.2
 
 Panther.Panther app;
 
@@ -100,7 +100,7 @@ public class Panther.Panther : Gtk.Application {
             var context = new OptionContext ("");
             context.add_main_entries (entries, "panther");
             context.add_group (Gtk.get_option_group (true));
-            
+
             try {
                 context.parse (ref args);
             } catch (Error e) {

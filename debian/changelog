@@ -1,4 +1,10 @@
-panther-launcher (1.11.0-r2-Debian1) sid; urgency=low
+panther-launcher (1.11.2-Debian1) sid; urgency=low
+
+  * Fixed packages
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Mon, 19 Sep 2016 23:55:00 +0200
+
+panther-launcher (1.11.1-Debian1) sid; urgency=low
 
   * New packages for Fedora 24
 
