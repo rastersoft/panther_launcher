@@ -1,3 +1,15 @@
+panther-launcher (1.11.0-r2-Debian1) sid; urgency=low
+
+  * New packages for Fedora 24
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Sun, 07 Aug 2016 23:55:00 +0200
+
+panther-launcher (1.11.0-Debian1) sid; urgency=low
+
+  * Allows to change the font and icon size, and has better autosizing
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Sun, 17 Jul 2016 23:55:00 +0200
+
 panther-launcher (1.10.1-Debian1) sid; urgency=low
 
   * Added compatibility with Gnome 3.20
