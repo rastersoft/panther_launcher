@@ -1,3 +1,5 @@
+* Version 1.11.0-r2 (2016-08-07)
+   * New packages for Fedora 24
 * Version 1.11.0 (2016-07-17)
    * Allows to change the font and icon size, and has better autosizing
 * Version 1.10.1 (2016-03-30)

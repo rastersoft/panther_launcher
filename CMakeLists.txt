@@ -56,10 +56,14 @@ if ( (NOT EXISTS "/usr/lib/pkgconfig/libpanel-applet.pc") AND (NOT EXISTS "/usr/
 	message(FATAL_ERROR "Can't find any of the files /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc")
 endif()
 
+add_subdirectory(src/Backend)
 add_subdirectory(po)
+add_subdirectory(src/synapse-core)
 add_subdirectory(panther_applet)
 add_subdirectory(data)
+add_subdirectory(src/synapse-plugins)
 add_subdirectory(data/icons)
 add_subdirectory(panther_gnome_shell)
+add_subdirectory(src/Widgets)
 add_subdirectory(src)
 
