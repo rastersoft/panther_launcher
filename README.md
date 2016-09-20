@@ -16,8 +16,11 @@ Just type from a command line:
 	make
 	sudo make install
 
-By default, both gnome shell extension and gnome panel applet will be installed
-system-wide.
+By default, both gnome shell extension and gnome-panel applet will be installed
+system-wide. If your system doesn't have gnome flashback available, you can
+disable building the gnome-panel applet by adding to the cmake command:
+
+    -DEXCLUDE_FLASHBACK=on
 
 It is important to install it in /usr instead of use /usr/local, to ensure that
 DBus activation works fine.

@@ -1,3 +1,9 @@
+panther-launcher (1.11.3-Debian1) sid; urgency=low
+
+  * Allows to disable building the gnome-panel applet (useful for fedora users)
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Tue, 20 Sep 2016 23:55:00 +0200
+
 panther-launcher (1.11.2-Debian1) sid; urgency=low
 
   * Fixed packages
