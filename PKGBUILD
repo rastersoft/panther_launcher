@@ -1,5 +1,5 @@
 pkgname=panther_launcher
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="A fork from Slingshot Launcher. Its main change is that it doesn't
 depend on Gala, Granite or other libraries not available in regular

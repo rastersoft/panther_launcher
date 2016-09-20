@@ -10,6 +10,7 @@ option(ICON_UPDATE "Update the icon cache after installing" ON)
 option(BUILD_VALADOC "Build API documentation if Valadoc is available" OFF)
 option(HAVE_ZEITGEIST "HAVE_ZEITGEIST" OFF)
 option(HAS_PLANK "HAS_PLANK" OFF)
+option(DISABLE_FLASHBACK "DISABLE_FLASHBACK" OFF)
 
 include(GNUInstallDirs)
 if( ( ${CMAKE_INSTALL_PREFIX} MATCHES "^/usr/local" ) )
@@ -52,9 +53,12 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} x11)
 
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
-if ( (NOT EXISTS "/usr/lib/pkgconfig/libpanel-applet.pc") AND (NOT EXISTS "/usr/lib64/pkgconfig/libpanel-applet.pc"))
-	message(FATAL_ERROR "Can't find any of the files /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc")
+if (NOT DISABLE_FLASHBACK)
+	if ( (NOT EXISTS "/usr/lib/pkgconfig/libpanel-applet.pc") AND (NOT EXISTS "/usr/lib64/pkgconfig/libpanel-applet.pc"))
+		message(FATAL_ERROR "Can't find any of the files /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc")
 endif()
+endif ()
+
 
 add_subdirectory(src/Backend)
 add_subdirectory(po)

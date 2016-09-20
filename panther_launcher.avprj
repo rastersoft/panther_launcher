@@ -1,5 +1,5 @@
 ### AutoVala Project ###
-autovala_version: 21
+autovala_version: 22
 project_name: panther_launcher
 vala_version: 0.26
 
@@ -14,7 +14,7 @@ custom: panther_gnome_shell/metadata.json share/gnome-shell/extensions/slingshot
 
 
 vala_binary: src/panther_launcher
-*version: 1.11.2
+*version: 1.11.3
 compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 *vala_package: posix
 if (HAVE_ZEITGEIST)
@@ -120,7 +120,11 @@ end
 *full_icon: Hicolor Status data/icons/panther-categories-symbolic.svg
 *full_icon: Hicolor Status data/icons/panther-icons-symbolic.svg
 
+if NOT DISABLE_FLASHBACK
 include: panther_applet/applet.txt
+end
 
+if NOT DISABLE_FLASHBACK
 source_dependency: /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc
+end
 
