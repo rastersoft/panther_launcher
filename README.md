@@ -16,11 +16,17 @@ Just type from a command line:
 	make
 	sudo make install
 
-By default, both gnome shell extension and gnome-panel applet will be installed
+By default, both gnome shell extension and gnome-panel and mate applets will be installed
 system-wide. If your system doesn't have gnome flashback available, you can
 disable building the gnome-panel applet by adding to the cmake command:
 
-    -DEXCLUDE_FLASHBACK=on
+    -DDISABLE_FLASHBACK=on
+
+Also you can disable the mate applet by adding:
+
+    -DDISABLE_MATE=on
+
+(be careful: it has two 'D's)
 
 It is important to install it in /usr instead of use /usr/local, to ensure that
 DBus activation works fine.
