@@ -1,5 +1,5 @@
 ### AutoVala Project ###
-autovala_version: 22
+autovala_version: 23
 project_name: panther_launcher
 vala_version: 0.26
 
@@ -123,8 +123,14 @@ end
 if NOT DISABLE_FLASHBACK
 include: panther_applet/applet.txt
 end
+if NOT DISABLE_MATE
+include: panther_mate/applet.txt
+end
 
 if NOT DISABLE_FLASHBACK
 source_dependency: /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc
+end
+if NOT DISABLE_MATE
+source_dependency: /usr/lib/pkgconfig/libmatepanelapplet-4.0.pc /usr/lib64/pkgconfig/libmatepanelapplet-4.0.pc
 end
 

@@ -1,0 +1,12 @@
+[Applet Factory]
+Id=PantherAppletFactory
+Location=@libexecdir@/panther_launcher/panther-mate-applet
+Name=Panther Launcher applet
+Description=Factory for the window navigation related applets
+InProcess=false
+
+[PantherApplet]
+Name=panther launcher
+Description=Shows the panther app launcher (a fork of Slingshot, from elementary OS)
+Icon=start-here
+MateComponentId=OAFIID:MATE_PantherApplet
