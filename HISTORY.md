@@ -1,3 +1,7 @@
+* Version 1.12.0 (2016-09-25)
+   * Added support for Mate Desktop (thanks to XRevan86)
+   * Added dependencies for needed icons
+   * Now tries to not use legacy icon names
 * Version 1.11.3 (2016-09-20)
    * Allows to disable building the gnome-panel applet (useful for fedora users)
 * Version 1.11.2 (2016-09-19)

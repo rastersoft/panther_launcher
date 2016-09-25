@@ -54,7 +54,7 @@ public class Panther.Backend.App : Object {
     public Synapse.Match? target { get; private set; default = null; }
     public Gee.ArrayList<string> actions { get; private set; default = null; }
     public Gee.HashMap<string, string> actions_map { get; private set; default = null; }
-    
+
     public signal void icon_changed ();
     public signal void launched (App app);
 
@@ -232,7 +232,7 @@ public class Panther.Backend.App : Object {
 
             new IconLoadFallbackMethod (() => {
                  try {
-                    icon = Panther.icon_theme.load_icon ("gtk-missing-image", size, flags);
+                    icon = Panther.icon_theme.load_icon ("image-missing", size, flags);
                  } catch (Error e) {
                     error ("Could not find a fallback icon to load");
                  }

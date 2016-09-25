@@ -14,7 +14,7 @@ custom: panther_gnome_shell/metadata.json share/gnome-shell/extensions/slingshot
 
 
 vala_binary: src/panther_launcher
-*version: 1.11.3
+*version: 1.12.0
 compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 *vala_package: posix
 if (HAVE_ZEITGEIST)
@@ -134,5 +134,5 @@ if NOT DISABLE_MATE
 source_dependency: /usr/lib/pkgconfig/libmatepanelapplet-4.0.pc /usr/lib64/pkgconfig/libmatepanelapplet-4.0.pc /usr/lib/x86_64-linux-gnu/pkgconfig/libmatepanelapplet-4.0.pc /usr/lib/i386-linux-gnu/pkgconfig/libmatepanelapplet-4.0.pc
 end
 
-binary_dependency: /usr/share/icons/gnome/16x16/status/gtk-missing-image.png /usr/share/icons/gnome/22x22/status/gtk-missing-image.png /usr/share/icons/gnome/24x24/status/gtk-missing-image.png /usr/share/icons/gnome/256x256/status/gtk-missing-image.png /usr/share/icons/gnome/32x32/status/gtk-missing-image.png /usr/share/icons/gnome/48x48/status/gtk-missing-image.png
+binary_dependency: /usr/share/icons/gnome/16x16/status/image-missing.png /usr/share/icons/gnome/22x22/status/image-missing.png /usr/share/icons/gnome/24x24/status/image-missing.png /usr/share/icons/gnome/256x256/status/image-missing.png /usr/share/icons/gnome/32x32/status/image-missing.png /usr/share/icons/gnome/48x48/status/image-missing.png
 

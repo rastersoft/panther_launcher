@@ -1,5 +1,5 @@
 Name: panther_launcher
-Version: 1.11.3
+Version: 1.12.0
 Release: 1
 License: Unknown/not set
 Summary: A fork from Slingshot Launcher. Its main change is that it doesn't depend on Gala, Granite or other libraries not available in regular linux distros. It also has been ported to Autovala, allowing an easier build. Finally, it also has an applet for Gnome Flashback and an extension for Gnome Shell, allowing to use it from these desktops.
@@ -8,6 +8,7 @@ AutoReqProv: no
 BuildRequires: gcc
 BuildRequires: gcc-c++
 BuildRequires: vala
+BuildRequires: glibc-headers
 BuildRequires: atk-devel
 BuildRequires: cairo-devel
 BuildRequires: gtk3-devel
@@ -24,9 +25,9 @@ BuildRequires: gettext
 BuildRequires: pkgconfig
 BuildRequires: make
 BuildRequires: intltool
-BuildRequires: gnome-desktop3-devel
+BuildRequires: gnome-panel-devel
+BuildRequires: mate-panel-devel
 
-Requires: gnome-icon-theme-legacy
 Requires: atk
 Requires: glib2
 Requires: cairo
@@ -40,6 +41,7 @@ Requires: gnome-menus
 Requires: libsoup
 Requires: libX11
 Requires: glibc-devel
+Requires: gnome-icon-theme
 
 %description
 A fork from Slingshot Launcher. Its main change is that it doesn't

@@ -1,5 +1,5 @@
 pkgname=panther_launcher
-pkgver=1.11.3
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A fork from Slingshot Launcher. Its main change is that it doesn't
 depend on Gala, Granite or other libraries not available in regular
@@ -8,8 +8,8 @@ easier build. Finally, it also has an applet for Gnome Flashback and
 an extension for Gnome Shell, allowing to use it from these desktops.
 "
 arch=('i686' 'x86_64')
-depends=( 'atk' 'glib2' 'cairo' 'gtk3' 'pango' 'gdk-pixbuf2' 'libgee' 'json-glib' 'gnome-menus' 'libsoup' 'libx11' 'glibc' )
-makedepends=( 'vala' 'atk' 'cairo' 'gtk3' 'gdk-pixbuf2' 'libgee' 'glib2' 'json-glib' 'gnome-menus' 'libsoup' 'pango' 'libx11' 'cmake' 'gettext' 'pkg-config' 'gcc' 'make' 'intltool' 'gnome-panel' )
+depends=( 'atk' 'glib2' 'cairo' 'gtk3' 'pango' 'gdk-pixbuf2' 'libgee' 'json-glib' 'gnome-menus' 'libsoup' 'libx11' 'glibc' 'gnome-icon-theme' )
+makedepends=( 'vala' 'glibc' 'atk' 'cairo' 'gtk3' 'gdk-pixbuf2' 'libgee' 'glib2' 'json-glib' 'gnome-menus' 'libsoup' 'pango' 'libx11' 'cmake' 'gettext' 'pkg-config' 'gcc' 'make' 'intltool' 'gnome-panel' 'mate-panel-gtk3' )
 build() {
 	rm -rf ${startdir}/install
 	mkdir ${startdir}/install
