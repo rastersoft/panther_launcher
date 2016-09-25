@@ -1,0 +1,39 @@
+cmake_minimum_required(VERSION 2.8)
+
+find_package(PkgConfig)
+pkg_check_modules(MATE_APPLET REQUIRED gtk+-3.0 libmatepanelapplet-4.0 gio-2.0 gio-unix-2.0)
+
+if(CMAKE_INSTALL_FULL_LIBEXECDIR)
+    set(libexecdir "${CMAKE_INSTALL_FULL_LIBEXECDIR}")
+else()
+    set(libexecdir "${CMAKE_INSTALL_PREFIX}/lib")
+endif()
+
+link_directories(
+    ${MATE_APPLET_LIBRARY_DIRS}
+)
+
+include_directories(
+    ${MATE_APPLET_INCLUDE_DIRS}
+)
+
+add_executable(panther-mate-applet panther_mate_applet.c dbus.c)
+
+target_link_libraries(panther-mate-applet
+    ${MATE_APPLET_LIBRARIES}
+)
+
+configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/com.rastersoft.PantherApplet.mate-panel-applet.in
+    ${CMAKE_CURRENT_BINARY_DIR}/com.rastersoft.PantherApplet.mate-panel-applet
+    @ONLY
+)
+configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/org.mate.panel.applet.PantherApplet.service.in
+    ${CMAKE_CURRENT_BINARY_DIR}/org.mate.panel.applet.PantherApplet.service
+    @ONLY
+)
+
+install (TARGETS panther-mate-applet RUNTIME DESTINATION ${libexecdir}/panther_launcher/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/com.rastersoft.PantherApplet.mate-panel-applet DESTINATION share/mate-panel/applets)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/org.mate.panel.applet.PantherApplet.service DESTINATION share/dbus-1/services)
