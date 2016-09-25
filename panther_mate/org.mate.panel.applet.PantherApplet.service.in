@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.mate.panel.applet.PantherAppletFactory
+Exec=@libexecdir@/panther_launcher/panther-mate-applet

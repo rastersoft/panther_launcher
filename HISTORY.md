@@ -1,3 +1,5 @@
+* Version 1.11.3 (2016-09-20)
+   * Allows to disable building the gnome-panel applet (useful for fedora users)
 * Version 1.11.2 (2016-09-19)
    * Fixed packages
 * Version 1.11.1 (2016-08-07)
