@@ -1,5 +1,5 @@
 ### AutoVala Project ###
-autovala_version: 23
+autovala_version: 24
 project_name: panther_launcher
 vala_version: 0.26
 
@@ -11,7 +11,6 @@ custom: panther_gnome_shell/metadata.json share/gnome-shell/extensions/slingshot
 
 *define: HAVE_ZEITGEIST
 *define: HAS_PLANK
-
 
 vala_binary: src/panther_launcher
 *version: 1.12.0
@@ -36,6 +35,7 @@ end
 *vala_check_package: pango
 *vala_check_package: pangocairo
 *vala_check_package: x11
+*vala_check_package: zeitgeist-2.0
 *c_library: m
 *vala_source: Backend/App.vala
 *vala_source: Backend/AppSystem.vala
@@ -72,41 +72,42 @@ end
 *vala_source: synapse-plugins/desktop-file-plugin.vala
 *vala_source: synapse-plugins/system-managment.vala
 
+
 *po: po
 
-*translate: vala src/Settings.vala
-*translate: vala src/Pixels.vala
-*translate: vala src/PantherView.vala
-*translate: vala src/Utils.vala
-*translate: vala src/Panther.vala
 *translate: vala src/Backend/App.vala
-*translate: vala src/Backend/SynapseSearch.vala
+*translate: vala src/Backend/AppSystem.vala
 *translate: vala src/Backend/DBusService.vala
 *translate: vala src/Backend/RelevancyService.vala
-*translate: vala src/Backend/AppSystem.vala
+*translate: vala src/Backend/SynapseSearch.vala
+*translate: vala src/Panther.vala
+*translate: vala src/PantherView.vala
+*translate: vala src/Pixels.vala
+*translate: vala src/Settings.vala
+*translate: vala src/Utils.vala
 *translate: vala src/Widgets/AppEntry.vala
-*translate: vala src/Widgets/SearchView.vala
-*translate: vala src/Widgets/SearchItem.vala
 *translate: vala src/Widgets/CategoryView.vala
 *translate: vala src/Widgets/Grid.vala
-*translate: vala src/Widgets/Switcher.vala
+*translate: vala src/Widgets/SearchItem.vala
+*translate: vala src/Widgets/SearchView.vala
 *translate: vala src/Widgets/Sidebar.vala
-*translate: vala src/synapse-core/desktop-file-service.vala
+*translate: vala src/Widgets/Switcher.vala
 *translate: vala src/synapse-core/common-actions.vala
 *translate: vala src/synapse-core/config-service.vala
 *translate: vala src/synapse-core/data-sink.vala
 *translate: vala src/synapse-core/dbus-service.vala
+*translate: vala src/synapse-core/desktop-file-service.vala
 *translate: vala src/synapse-core/match.vala
 *translate: vala src/synapse-core/plugin.vala
 *translate: vala src/synapse-core/query.vala
+*translate: vala src/synapse-core/relevancy-backend-zg.vala
+*translate: vala src/synapse-core/relevancy-service.vala
 *translate: vala src/synapse-core/result-set.vala
 *translate: vala src/synapse-core/utils.vala
 *translate: vala src/synapse-core/volume-service.vala
-*translate: vala src/synapse-core/relevancy-service.vala
-*translate: vala src/synapse-core/relevancy-backend-zg.vala
-*translate: vala src/synapse-plugins/desktop-file-plugin.vala
 *translate: vala src/synapse-plugins/calculator-plugin.vala
 *translate: vala src/synapse-plugins/command-plugin.vala
+*translate: vala src/synapse-plugins/desktop-file-plugin.vala
 *translate: vala src/synapse-plugins/system-managment.vala
 
 *data: data/local

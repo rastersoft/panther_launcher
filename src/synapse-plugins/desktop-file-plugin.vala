@@ -27,12 +27,12 @@ namespace Synapse
 
     public void activate ()
     {
-      
+
     }
 
     public void deactivate ()
     {
-      
+
     }
 
     public class ActionMatch : Object, Match
@@ -58,12 +58,12 @@ namespace Synapse
         this.description = "";
         this.app_info = desktop_app_info;
         this.action_name = action_name;
-      }   
+      }
 
       public void execute (Match? match)
       {
         ((DesktopAppInfo) app_info).launch_action (action_name, new AppLaunchContext ());
-      }       
+      }
     }
 
     private class DesktopFileMatch: Object, Match, ApplicationMatch
@@ -127,12 +127,12 @@ namespace Synapse
         register_plugin
       );
     }
-    
+
     static construct
     {
       register_plugin ();
     }
-    
+
     private Gee.List<DesktopFileMatch> desktop_files;
 
     construct
@@ -216,7 +216,7 @@ namespace Synapse
             results.add (dfm, compute_relevancy (dfm, matcher.value - Match.Score.INCREMENT_SMALL));
             matched = true;
             break;
-          } 
+          }
           else if (info.is_partial_match ())
           {
             results.add (dfm, compute_relevancy (dfm, Match.Score.INCREMENT_SMALL));
@@ -247,13 +247,13 @@ namespace Synapse
             {
               var am = new ActionMatch (id, action);
               results.add (am, compute_relevancy (dfm, Match.Score.INCREMENT_SMALL));
-              matched = true;  
-              break;        
+              matched = true;
+              break;
             }
           }
         }
 
-        if (!matched && (comment.down ().contains (q.query_string_folded) 
+        if (!matched && (comment.down ().contains (q.query_string_folded)
             || generic_name.down ().contains (q.query_string_folded)))
         {
             results.add (dfm, compute_relevancy (dfm, Match.Score.AVERAGE - Match.Score.INCREMENT_MEDIUM));
@@ -365,7 +365,7 @@ namespace Synapse
         }
       }
     }
-    
+
     private Gee.Map<string, Gee.List<OpenWithAction> > mimetype_map;
 
     public ResultSet? find_for_match (ref Query query, Match match)
@@ -374,7 +374,7 @@ namespace Synapse
 
       var uri_match = match as UriMatch;
       return_val_if_fail (uri_match != null, null);
-      
+
       if (uri_match.mime_type == null) return null;
 
       Gee.List<OpenWithAction> ow_list = mimetype_map[uri_match.mime_type];
@@ -399,7 +399,7 @@ namespace Synapse
       else if (ow_list.size == 0) return null;
 
       var rs = new ResultSet ();
-      
+
       if (query.query_string == "")
       {
         foreach (var action in ow_list)

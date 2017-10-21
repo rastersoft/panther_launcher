@@ -84,7 +84,7 @@ public class Panther.Panther : Gtk.Application {
         Panther.silent = false;
     }
 
-    static const OptionEntry[] entries = {
+    const OptionEntry[] entries = {
         { "silent", 's', 0, OptionArg.NONE, ref silent, "Launch Panther as a background process without it appearing visually.", null },
         { "command-mode", 'c', 0, OptionArg.NONE, ref command_mode, "This feature is not implemented yet. When it is, description will be changed.", null },
         { null }
@@ -136,4 +136,3 @@ public class RemoteControl : GLib.Object {
         app.activate();
     }
 }
-

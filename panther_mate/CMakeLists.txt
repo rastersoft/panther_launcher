@@ -4,4 +4,3 @@
 if (NOT DISABLE_MATE)
 	include(${CMAKE_CURRENT_SOURCE_DIR}/applet.txt)
 endif ()
-
