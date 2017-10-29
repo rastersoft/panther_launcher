@@ -1,5 +1,5 @@
 ### AutoVala Project ###
-autovala_version: 24
+autovala_version: 26
 project_name: panther_launcher
 vala_version: 0.26
 
@@ -16,10 +16,10 @@ vala_binary: src/panther_launcher
 *version: 1.12.0
 compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 *vala_package: posix
+vala_check_package: gtk+-3.0
 if (HAVE_ZEITGEIST)
 vala_check_package: zeitgeist-1.0
 end
-*vala_check_package: atk
 *vala_check_package: cairo
 *vala_check_package: gdk-3.0
 *vala_check_package: gdk-pixbuf-2.0
@@ -28,13 +28,11 @@ end
 *vala_check_package: gio-unix-2.0
 *vala_check_package: glib-2.0
 *vala_check_package: gobject-2.0
-*vala_check_package: gtk+-3.0
 *vala_check_package: json-glib-1.0
 *vala_check_package: libgnome-menu-3.0
 *vala_check_package: libsoup-2.4
 *vala_check_package: pango
 *vala_check_package: pangocairo
-*vala_check_package: x11
 *vala_check_package: zeitgeist-2.0
 *c_library: m
 *vala_source: Backend/App.vala
@@ -113,8 +111,6 @@ end
 *data: data/local
 
 *doc: doc
-
-*dbus_service: data/com.rastersoft.panther.remotecontrol.service.base
 
 *scheme: data/org.rastersoft.panther.gschema.xml
 

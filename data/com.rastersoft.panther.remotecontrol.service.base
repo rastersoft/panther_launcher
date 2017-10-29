@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=com.rastersoft.panther.remotecontrol
-Exec=@DBUS_PREFIX@/bin/panther_launcher -s
