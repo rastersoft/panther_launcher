@@ -112,6 +112,8 @@ end
 
 *doc: doc
 
+*dbus_service: data/dbus/com.rastersoft.panther.remotecontrol.service.base
+
 *scheme: data/org.rastersoft.panther.gschema.xml
 
 *full_icon: Hicolor Status data/icons/panther-categories-symbolic.svg

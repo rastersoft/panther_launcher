@@ -1,0 +1,4 @@
+option('HAVE_ZEITGEIST',type : 'string', value: '')
+option('HAS_PLANK',type : 'string', value: '')
+option('DISABLE_FLASHBACK',type : 'string', value: '')
+option('DISABLE_MATE',type : 'string', value: '')

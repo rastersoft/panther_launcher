@@ -1,0 +1,2 @@
+i18n = import('i18n')
+i18n.gettext('panther_launcher', languages: ['sr', 'eo', 'fi', 'fr', 'zh_CN', 'en_CA', 'el', 'gl', 'bs', 'sl', 'ar', 'pt', 'sv', 'lo', 'vi', 'hi', 'uk', 'am', 'he', 'nl', 'da', 'cs', 'ca', 'id', 'ky', 'si', 'ko', 'is', 'en_GB', 'hy', 'af', 'fa', 'pt_BR', 'ms', 'it', 'ta', 'hu', 'lt', 'nn', 'ka', 'hr', 'ja', 'mr', 'my', 'es', 'sk', 'ml', 'pl', 'ckb', 'de', 'et', 'bn', 'ast', 'ru', 'th', 'sma', 'lv', 'zh_TW', 'bg', 'be', 'lb', 'az', 'sw', 'zh_HK', 'fr_CA', 'ro', 'tr', 'te', 'rue', 'en_AU', 'sr@latin', 'eu', 'nb', 'sq'])
