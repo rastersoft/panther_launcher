@@ -4,7 +4,7 @@ cfg_panther_launcher.set('PKGDATADIR', join_paths(get_option('prefix'),get_optio
 cfg_panther_launcher.set('GETTEXT_PACKAGE', 'panther_launcher')
 cfg_panther_launcher.set('RELEASE_NAME', 'panther_launcher')
 cfg_panther_launcher.set('PREFIX', get_option('prefix'))
-cfg_panther_launcher.set('VERSION', '1.13.0')
+cfg_panther_launcher.set('VERSION', '1.13.1')
 cfg_panther_launcher.set('TESTSRCDIR', meson.source_root())
 
 cfgfile_1 = configure_file(input: 'Config.vala.base',output: 'Config.vala',configuration: cfg_panther_launcher)

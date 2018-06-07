@@ -62,7 +62,11 @@ if not DISABLE_FLASHBACK
 		check_files_var = check_files_retval.returncode()
 	endif
 	if (check_files_var != 0)
-		error('At least one of these files must exist to compile this project:\n	/usr/lib/pkgconfig/libpanel-applet.pc\n	/usr/lib64/pkgconfig/libpanel-applet.pc\n	/usr/lib/x86_64-linux-gnu/pkgconfig/libpanel-applet.pc\n')
+		check_files_retval = run_command(join_paths(meson.current_source_dir(),'meson_scripts','check_path.sh'),'/usr/lib/i386-linux-gnu/pkgconfig/libpanel-applet.pc')
+		check_files_var = check_files_retval.returncode()
+	endif
+	if (check_files_var != 0)
+		error('At least one of these files must exist to compile this project:\n	/usr/lib/pkgconfig/libpanel-applet.pc\n	/usr/lib64/pkgconfig/libpanel-applet.pc\n	/usr/lib/x86_64-linux-gnu/pkgconfig/libpanel-applet.pc\n	/usr/lib/i386-linux-gnu/pkgconfig/libpanel-applet.pc\n')
 	endif
 endif
 if not DISABLE_MATE

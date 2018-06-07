@@ -1,5 +1,7 @@
 # History of versions
 
+* Version 1.13.1 (2018-06-07)
+      * Now compiles again in debian 32bit
 * Version 1.13.0 (2018-06-07)
       * Now compiles again
 * Version 1.12.0 (2016-09-25)
