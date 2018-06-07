@@ -11,7 +11,7 @@ cfgfile_1 = configure_file(input: 'Config.vala.base',output: 'Config.vala',confi
 
 panther_launcher_deps = [gtk_3_0_dep]
 if ( HAVE_ZEITGEIST )
-panther_launcher_deps += [zeitgeist_1_0_dep]
+panther_launcher_deps += [zeitgeist_2_0_dep]
 endif
 panther_launcher_deps += [cairo_dep]
 panther_launcher_deps += [gdk_3_0_dep]
@@ -26,7 +26,6 @@ panther_launcher_deps += [libgnome_menu_3_0_dep]
 panther_launcher_deps += [libsoup_2_4_dep]
 panther_launcher_deps += [pango_dep]
 panther_launcher_deps += [pangocairo_dep]
-panther_launcher_deps += [zeitgeist_2_0_dep]
 panther_launcher_sources = [cfgfile_1]
 panther_launcher_sources += ['Backend/App.vala']
 panther_launcher_sources += ['Backend/AppSystem.vala']

@@ -9,7 +9,7 @@ add_global_arguments('-DGETTEXT_PACKAGE="panther_launcher"',language: 'c')
 
 gtk_3_0_dep = dependency('gtk+-3.0')
 if ( HAVE_ZEITGEIST )
-zeitgeist_1_0_dep = dependency('zeitgeist-1.0')
+zeitgeist_2_0_dep = dependency('zeitgeist-2.0')
 endif
 cairo_dep = dependency('cairo')
 gdk_3_0_dep = dependency('gdk-3.0')
@@ -24,7 +24,6 @@ libgnome_menu_3_0_dep = dependency('libgnome-menu-3.0')
 libsoup_2_4_dep = dependency('libsoup-2.4')
 pango_dep = dependency('pango')
 pangocairo_dep = dependency('pangocairo')
-zeitgeist_2_0_dep = dependency('zeitgeist-2.0')
 
 subdir('po')
 cfg_dbus_data = configuration_data()

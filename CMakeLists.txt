@@ -38,7 +38,7 @@ find_package(PkgConfig)
 
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gtk+-3.0)
 if ((HAVE_ZEITGEIST))
-	set(MODULES_TO_CHECK ${MODULES_TO_CHECK} zeitgeist-1.0)
+	set(MODULES_TO_CHECK ${MODULES_TO_CHECK} zeitgeist-2.0)
 endif ()
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} cairo)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gdk-3.0)
@@ -53,7 +53,6 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} libgnome-menu-3.0)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} libsoup-2.4)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} pango)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} pangocairo)
-set(MODULES_TO_CHECK ${MODULES_TO_CHECK} zeitgeist-2.0)
 
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
