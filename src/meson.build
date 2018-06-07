@@ -4,7 +4,7 @@ cfg_panther_launcher.set('PKGDATADIR', join_paths(get_option('prefix'),get_optio
 cfg_panther_launcher.set('GETTEXT_PACKAGE', 'panther_launcher')
 cfg_panther_launcher.set('RELEASE_NAME', 'panther_launcher')
 cfg_panther_launcher.set('PREFIX', get_option('prefix'))
-cfg_panther_launcher.set('VERSION', '1.12.0')
+cfg_panther_launcher.set('VERSION', '1.13.0')
 cfg_panther_launcher.set('TESTSRCDIR', meson.source_root())
 
 cfgfile_1 = configure_file(input: 'Config.vala.base',output: 'Config.vala',configuration: cfg_panther_launcher)
@@ -81,6 +81,7 @@ if DISABLE_MATE
   panther_launcher_c_args += ['-DDISABLE_MATE']
 endif
 panther_launcher_deps += [meson.get_compiler('c').find_library('m', required : false)]
+panther_launcher_link_args = ['-rdynamic']
 
-executable('panther_launcher',panther_launcher_sources,dependencies: panther_launcher_deps,vala_args: panther_launcher_vala_args,c_args: panther_launcher_c_args,install: true)
+executable('panther_launcher',panther_launcher_sources,dependencies: panther_launcher_deps,vala_args: panther_launcher_vala_args,c_args: panther_launcher_c_args,link_args: panther_launcher_link_args,install: true)
 

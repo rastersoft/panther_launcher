@@ -1,7 +1,14 @@
+panther-launcher (1.13.0-Debian1) sid; urgency=low
+
+  * Now compiles again
+
+ -- Sergio Costas Rodriguez <raster@rastersoft.com>  Thu, 07 Jun 2018 23:55:00 +0200
+
 panther-launcher (1.12.0-Debian1) sid; urgency=low
 
   * Added support for Mate Desktop (thanks to XRevan86)
   * Added dependencies for needed icons
+  * Now tries to not use legacy icon names
 
  -- Sergio Costas Rodriguez <raster@rastersoft.com>  Sun, 25 Sep 2016 23:55:00 +0200
 

@@ -10,11 +10,11 @@ it from these desktops.
 
 Just type from a command line:
 
-	mkdir install
-	cd install
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-	make
-	sudo make install
+    mkdir install
+    cd install
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    make
+    sudo make install
 
 By default, both gnome shell extension and gnome-panel and mate-panel applets
 will be installed system-wide. If your system doesn't have gnome flashback
@@ -27,10 +27,13 @@ Also you can disable the mate-panel applet by adding:
 
     -DDISABLE_MATE=ON
 
-(be careful: it has two 'D's)
+(be careful: they have two 'D's)
 
 It is important to install it in /usr instead of use /usr/local, to ensure that
 DBus activation works fine.
+
+Some extra packages are needed to compile it. Some are quite hard to know which,
+like the one with the "missing-icon" (in debian it is *gnome-icon-theme*).
 
 ## Changing the location of the launcher's window
 

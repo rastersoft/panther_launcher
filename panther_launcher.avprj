@@ -1,5 +1,5 @@
 ### AutoVala Project ###
-autovala_version: 26
+autovala_version: 28
 project_name: panther_launcher
 vala_version: 0.26
 
@@ -13,7 +13,7 @@ custom: panther_gnome_shell/metadata.json share/gnome-shell/extensions/slingshot
 *define: HAS_PLANK
 
 vala_binary: src/panther_launcher
-*version: 1.12.0
+*version: 1.13.0
 compile_c_options: -DGMENU_I_KNOW_THIS_IS_UNSTABLE
 *vala_package: posix
 vala_check_package: gtk+-3.0
@@ -114,6 +114,8 @@ end
 
 *dbus_service: data/dbus/com.rastersoft.panther.remotecontrol.service.base
 
+*dbus_config: data/dbus/com.rastersoft.panther.remotecontrol.conf
+
 *scheme: data/org.rastersoft.panther.gschema.xml
 
 *full_icon: Hicolor Status data/icons/panther-categories-symbolic.svg
@@ -127,7 +129,7 @@ include: panther_mate/applet.txt
 end
 
 if NOT DISABLE_FLASHBACK
-source_dependency: /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc
+source_dependency: /usr/lib/pkgconfig/libpanel-applet.pc /usr/lib64/pkgconfig/libpanel-applet.pc /usr/lib/x86_64-linux-gnu/pkgconfig/libpanel-applet.pc
 end
 if NOT DISABLE_MATE
 source_dependency: /usr/lib/pkgconfig/libmatepanelapplet-4.0.pc /usr/lib64/pkgconfig/libmatepanelapplet-4.0.pc /usr/lib/x86_64-linux-gnu/pkgconfig/libmatepanelapplet-4.0.pc /usr/lib/i386-linux-gnu/pkgconfig/libmatepanelapplet-4.0.pc

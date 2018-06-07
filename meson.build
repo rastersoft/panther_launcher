@@ -41,10 +41,11 @@ meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','
 
 meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_data.sh'),join_paths(get_option('prefix'),get_option('datadir'),'panther_launcher'),join_paths(meson.current_source_dir(),'data/local','','*'))
 
-meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_data.sh'),join_paths(get_option('prefix'),get_option('datadir'),'doc'),join_paths(meson.current_source_dir(),'doc','','*'))
+meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_data.sh'),join_paths(get_option('prefix'),get_option('datadir'),'doc','panther_launcher'),join_paths(meson.current_source_dir(),'doc','','*'))
 
 dbus_cfg_com_rastersoft_panther_remotecontrol_service_base = configure_file(input: 'data/dbus/com.rastersoft.panther.remotecontrol.service.base',output: 'com.rastersoft.panther.remotecontrol.service', configuration: cfg_dbus_data)
 install_data(dbus_cfg_com_rastersoft_panther_remotecontrol_service_base,install_dir: join_paths(get_option('prefix'),get_option('datadir'),'dbus-1','services'))
+install_data( 'data/dbus/com.rastersoft.panther.remotecontrol.conf',install_dir: join_paths(get_option('prefix'),get_option('datadir'),'dbus-1','system.d'))
 install_data('data/org.rastersoft.panther.gschema.xml', install_dir: join_paths(get_option('prefix'),get_option('datadir'), 'glib-2.0', 'schemas'))
 meson.add_install_script('meson_scripts/install_schemas.py')
 install_data('data/icons/panther-categories-symbolic.svg',install_dir: join_paths(get_option('prefix'),get_option('datadir'),'icons','hicolor/scalable/status'))
@@ -57,7 +58,11 @@ if not DISABLE_FLASHBACK
 		check_files_var = check_files_retval.returncode()
 	endif
 	if (check_files_var != 0)
-		error('At least one of these files must exist to compile this project:\n	/usr/lib/pkgconfig/libpanel-applet.pc\n	/usr/lib64/pkgconfig/libpanel-applet.pc\n')
+		check_files_retval = run_command(join_paths(meson.current_source_dir(),'meson_scripts','check_path.sh'),'/usr/lib/x86_64-linux-gnu/pkgconfig/libpanel-applet.pc')
+		check_files_var = check_files_retval.returncode()
+	endif
+	if (check_files_var != 0)
+		error('At least one of these files must exist to compile this project:\n	/usr/lib/pkgconfig/libpanel-applet.pc\n	/usr/lib64/pkgconfig/libpanel-applet.pc\n	/usr/lib/x86_64-linux-gnu/pkgconfig/libpanel-applet.pc\n')
 	endif
 endif
 if not DISABLE_MATE
