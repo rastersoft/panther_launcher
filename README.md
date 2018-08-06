@@ -1,5 +1,9 @@
 # Panther Launcher
 
+**IMPORTANT: Panther Launcher has been migrated to Gitlab**
+
+https://gitlab.com/rastersoft/panther_launcher
+
 A fork from Slingshot Launcher. Its main change is that it doesn't depend on
 Gala, Granite or other libraries not available in regular linux distros. It also
 has been ported to Autovala, allowing an easier build. Finally, it also has an
