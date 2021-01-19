@@ -50,7 +50,7 @@ Just type from a command line:
 
     mkdir install
     cd install
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DRPI4=1 -DDISABLE_MATE=1 -DDISABLE_FLASHBACK=1
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DDISABLE_MATE=1 -DDISABLE_FLASHBACK=1
     make
     sudo make install
 
