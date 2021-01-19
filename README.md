@@ -39,6 +39,21 @@ DBus activation works fine.
 Some extra packages are needed to compile it. Some are quite hard to know which,
 like the one with the "missing-icon" (in debian it is *gnome-icon-theme*).
 
+## Installing Panther Launcher on the Raspberry Pi 4
+
+Grab the following dependencies:
+
+    sudo apt install libjson-glib-dev libsoup2.4-dev libpanel-applet-dev
+
+
+Just type from a command line:
+
+    mkdir install
+    cd install
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DDISABLE_MATE=1 -DDISABLE_FLASHBACK=1
+    make
+    sudo make install
+
 ## Changing the location of the launcher's window
 
 It is possible to move the window to the bottom part of the screen. To do so,
