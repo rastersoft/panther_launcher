@@ -42,6 +42,7 @@ like the one with the "missing-icon" (in debian it is *gnome-icon-theme*).
 ## Installing Panther Launcher on the Raspberry Pi 4
 
 Grab the following dependencies:
+
     sudo apt install libjson-glib-dev libsoup2.4-dev libpanel-applet-dev
 
 
